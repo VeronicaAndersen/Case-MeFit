@@ -11,9 +11,6 @@ const LoginForm = () => {
                     {!keycloak.authenticated && (
                         <button onClick={() => keycloak.register()}>Register</button>
                     )}
-                    {keycloak.authenticated && (
-                        <button onClick={() => keycloak.logout()}>Logout</button>
-                    )}
                 </section>
             </div>
         </>
