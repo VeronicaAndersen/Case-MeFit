@@ -26,7 +26,7 @@ const Navbar = () => {
                             to="/profile">
                             <GiWeightLiftingUp /> Profile
                             <span className="dropdown-arrow"></span>
-                            <div className="dropdown-content">
+                            <div className="dropdown-profile">
                                 <div>Settings</div>
                                 <div onClick={() => keycloak.logout()} id="logout">Logout</div>
                             </div>
