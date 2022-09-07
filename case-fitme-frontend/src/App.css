@@ -288,8 +288,30 @@ a {
 #submitbtn {
     margin-top: 05vh;
     display: flex;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 10px;
 }
 
 
 /*______________  __________________*/
+
+.input-form {
+    background-color: #ececec;
+    box-shadow: var(--shadow);
+    width: 60vw;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 40px;
+    border: 1px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-form:focus {
+   outline: none;
+}
+
 

@@ -8,7 +8,7 @@ const SetGoal = () => {
         <>
             <h1>Set Goal</h1>
             <Form onSubmit={values => console.log(values)}>
-                <input
+                <input className='input-form'
                     name="goalName"
                     component="input"
                     type="tel"
