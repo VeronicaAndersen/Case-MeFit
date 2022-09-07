@@ -40,7 +40,7 @@ h1 {
     align-items: center;
 }
 
-button {
+.button {
     margin: 20px;
     width: 150px;
     background-color: transparent
@@ -56,8 +56,8 @@ button {
     box-shadow: var(--shadow);
 }
 
-button::after,
-button::before {
+.button::after,
+.button::before {
     content: "";
     position: absolute;
     width: 40px;
@@ -67,22 +67,22 @@ button::before {
     border-radius: 5px;
 }
 
-button::before {
+.button::before {
     top: -15px;
     left: -15px;
     border-width: 2px 0 0 2px;
     border-color: var(--secondary);
 }
 
-button::after {
+.button::after {
     bottom: -15px;
     right: -15px;
     border-width: 0 2px 2px 0;
     border-color: var(--secondary);
 }
 
-button:hover::before,
-button:hover::after {
+.button:hover::before,
+.button:hover::after {
     width: calc(100% + 27px);
     height: calc(100% + 27px);
 }
@@ -259,4 +259,14 @@ a {
     text-decoration: none;
     display: block;
 }
+
+/*______________ Save Goal Button __________________*/
+
+#submitbtn {
+    margin-top: 05vh;
+    display: flex;
+}
+
+
+/*______________  __________________*/
 

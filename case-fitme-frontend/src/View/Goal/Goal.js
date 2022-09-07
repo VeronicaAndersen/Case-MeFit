@@ -1,4 +1,5 @@
 import GoalDashboard from "../../Components/Goal/GoalDashboard"
+import SetGoal from "../../Components/Goal/SetGoal/SetGoal"
 import keycloak from "../../Keycloak/keycloak"
 
 
