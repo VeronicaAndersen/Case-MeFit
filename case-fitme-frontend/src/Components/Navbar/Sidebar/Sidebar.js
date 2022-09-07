@@ -7,32 +7,32 @@ const Sidebar = () => {
             {keycloak.authenticated && (
                 <div className="sidebar">
                     <Link className="side-item"
-                        id="goal"
+                        id="dashboard"
                         to="/goalsdashboard">
                         Dashboard
                     </Link>
                     <Link className="side-item"
-                        id="goal"
+                        id="set"
                         to="/setgoals">
                         Set Goal
                     </Link>
                     <Link className="side-item"
-                        id="goal"
+                        id="archived"
                         to="/archivedgoals">
                         Archived Goal
                     </Link>
                     <Link className="side-item"
-                        id="goal"
+                        id="exercise"
                         to="/exercise">
-                        Exercise
+                        Exercises
                     </Link>
                     <Link className="side-item"
-                        id="goal"
+                        id="workout"
                         to="/workouts">
                         Workouts
                     </Link>
                     <Link className="side-item"
-                        id="goal"
+                        id="program"
                         to="/programs">
                         Programs
                     </Link>
