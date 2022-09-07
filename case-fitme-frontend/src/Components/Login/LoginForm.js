@@ -6,10 +6,10 @@ const LoginForm = () => {
             <div>
                 <section className="buttons">
                 {!keycloak.authenticated && (
-                        <button onClick={() => keycloak.login()}>Login</button>
+                        <button className="button" onClick={() => keycloak.login()}>Login</button>
                     )}
                     {!keycloak.authenticated && (
-                        <button onClick={() => keycloak.register()}>Register</button>
+                        <button className="button" onClick={() => keycloak.register()}>Register</button>
                     )}
                 </section>
             </div>
