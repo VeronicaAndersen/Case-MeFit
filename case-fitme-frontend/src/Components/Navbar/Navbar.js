@@ -7,11 +7,11 @@ const Navbar = () => {
     return (
         <>
             <nav>
-            <Link className="menu-item"
-                        id="logo"
-                        to="/">
-                        <strong>FitMe</strong>
-                    </Link>
+                <Link className="menu-item"
+                    id="logo"
+                    to="/">
+                    <strong>FitMe</strong>
+                </Link>
                 {keycloak.authenticated && (
                     <Link className="menu-item"
                         id="goals"
@@ -27,7 +27,12 @@ const Navbar = () => {
                             <GiWeightLiftingUp /> Profile
                             <span className="dropdown-arrow"></span>
                             <div className="dropdown-profile">
-                                <div>Settings</div>
+                                
+                                <Link className="menu-item"
+                                    id="settings"
+                                    to="/profile">
+                                    Settings
+                                </Link>
                                 <div onClick={() => keycloak.logout()} id="logout">Logout</div>
                             </div>
                         </div>

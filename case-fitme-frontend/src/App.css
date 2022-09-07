@@ -43,9 +43,7 @@ h1 {
 button {
     margin: 20px;
     width: 150px;
-    background-color: transparent
-        /* #f9f4f0 */
-    ;
+    background-color: transparent;
     font-size: 25px;
     color: #000;
     padding: 15px 0;
@@ -99,6 +97,31 @@ button:hover::after {
     margin: auto auto;
     margin-top: 300px;
     text-align: center;
+}
+
+/*______________ Items __________________*/
+
+.item{
+    background-color: #ececec;
+    box-shadow: var(--shadow);
+    width: 60vw;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item p{
+    margin-left: 20px;
+}
+
+.item button{
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 10px;
 }
 
 /*______________ Sidebar __________________*/
