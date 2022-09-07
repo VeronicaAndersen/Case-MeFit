@@ -11,7 +11,7 @@ const Goal = () => {
                 Goal Dashboard
             </h1>
             <GoalDropdown/>
-            <SetGoal/>
+            
             </div>
         )}
         </>

@@ -7,6 +7,7 @@ import Exercise from './View/Exercise/Exercise';
 import Profile from './View/Profile/Profile';
 import Workout from './View/Workout/Workout';
 import Program from './View/Program/Program';
+import SetGoal from './View/SetGoal/SetGoal';
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/exercise" element={<Exercise/>}/>
           <Route path="/workouts" element={<Workout/>}/>
           <Route path="/programs" element={<Program/>}/>
+          <Route path='/setgoals' element={<SetGoal />} />
         </Routes>
 
       <Login/>
