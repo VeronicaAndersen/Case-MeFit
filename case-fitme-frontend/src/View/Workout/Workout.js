@@ -1,12 +1,15 @@
 import Workouts from "../../Components/Goal/Workouts/Workouts"
+import keycloak from "../../Keycloak/keycloak";
 
 const Workout = () => {
 
     return (
         <>
-            <div className="content">
-                <Workouts />
-            </div>
+            {keycloak.authenticated && (
+                <div className="content">
+                    <Workouts />
+                </div>
+            )}
         </>
     )
 }

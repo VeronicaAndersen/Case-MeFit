@@ -1,12 +1,15 @@
 import Programs from "../../Components/Goal/Programs/Programs"
+import keycloak from "../../Keycloak/keycloak";
 
 const Program = () => {
 
     return (
         <>
-            <div className="content">
-                <Programs/>
-            </div>
+            {keycloak.authenticated && (
+                <div className="content">
+                    <Programs />
+                </div>
+            )}
         </>
     )
 }

@@ -1,11 +1,14 @@
 import Profiles from "../../Components/Profiles/Profiles";
+import keycloak from "../../Keycloak/keycloak"
 
 const Profile = () => {
     return (
         <>
-            <div className="content">
-                <Profiles/>
-            </div>
+            {keycloak.authenticated && (
+                <div className="content">
+                    <Profiles />
+                </div>
+            )}
         </>
     )
 }
