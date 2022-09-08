@@ -316,7 +316,7 @@ font-weight: 700;
 }
 
 
-/*______________  __________________*/
+/*______________ Input Form __________________*/
 
 .input-form {
     background-color: #ececec;
@@ -334,4 +334,35 @@ font-weight: 700;
     outline: none;
 }
 
+/*______________ Goal Box __________________*/
 
+#setgoalbtn {
+    margin-top: 05vh;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 10px;
+}
+
+
+.setgoalbox{
+    background-color: #ececec;
+    box-shadow: var(--shadow);
+    width: 60vw;
+    height: 200px;
+
+
+    border-radius: 10px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setgoalbox p{
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+    
+    
