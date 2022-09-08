@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 const Exercises = () => {
 
     const [apiData, setApiData] = useState([]);
-    const api_url = `https://fitmecase.herokuapp.com/api/v1/exercise`
     useEffect(() => {
-        fetch(api_url)
+        fetch(`https://fitmecase.herokuapp.com/api/v1/exercise`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(

@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react';
 const Programs = () => {
 
     const [apiData, setApiData] = useState([]);
-    const api_url = `https://fitmecase.herokuapp.com/api/v1/program`
     useEffect(() => {
-        fetch(api_url)
+        fetch(`https://fitmecase.herokuapp.com/api/v1/program`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
