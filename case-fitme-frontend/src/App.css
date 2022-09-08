@@ -232,6 +232,25 @@ a {
     border-top: 6px solid transparent;
 }
 
+/*______________ Todays list __________________*/
+
+.today-schedule li{
+    list-style: none;
+}
+
+.workout{
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.place{
+    font-weight: 300;
+}
+
+.time{
+font-weight: 700;
+}
+
 /*______________ Dropdown __________________*/
 
 #test {

@@ -1,8 +1,10 @@
 {
-    "realm": "noroff",
-    "auth-server-url": "https://acc-keycloak.herokuapp.com/auth/",
+    "realm": "case-mefit",
+    "auth-server-url": "https://case-keycloak.herokuapp.com/auth/",
     "ssl-required": "external",
-    "resource": "react-client",
+    "resource": "js-console",
     "public-client": true,
+    "verify-token-audience": true,
+    "use-resource-role-mappings": true,
     "confidential-port": 0
-}
+  }
