@@ -5,11 +5,11 @@ const SetGoal = () => {
 
     return (
         <>
-        {keycloak.authenticated && (
-            <div className="content">
-                <SetGoals/>
-            </div>
-        )}
+            {keycloak.authenticated && (
+                <div className="content">
+                    <SetGoals />
+                </div>
+            )}
         </>
     )
 }
