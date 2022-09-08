@@ -8,6 +8,7 @@ const SetGoal = () => {
         {keycloak.authenticated && (
             <div className="content">
                 <SetGoals/>
+                
             </div>
         )}
         </>

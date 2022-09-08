@@ -13,10 +13,11 @@ const SetGoal = () => {
                     component="input"
                     type="tel"
                     placeholder="Goal Name" />
-                    <br/>
+                <br />
                 <DatePick />
                 <button id='submitbtn'> Save Goal </button>
             </Form>
+            <GoalBox />
         </>
     )
 }
@@ -27,6 +28,19 @@ function DatePick() {
     return (
         <>
             <input type="date" onChange={e => setDate(e.target.value)} />
+        </>
+    )
+}
+
+const GoalBox = () => {
+    return (
+        <>
+            <button id='setgoalbtn'>Programs</button>
+            <button id='setgoalbtn'>Workouts</button>
+                <div className="setgoalbox">
+                    <p>There is no program for this goal.</p>
+                </div>
+
         </>
     )
 }
