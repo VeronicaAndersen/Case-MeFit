@@ -25,10 +25,10 @@ function App() {
           <Route path="/programs" element={<Program/>}/>
           <Route path='/setgoals' element={<SetGoal />} />
         </Routes>
-
-      <Login/>
+        <Login/>
     </div>
     </BrowserRouter>
+    
   );
 }
 

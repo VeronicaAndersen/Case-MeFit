@@ -30,8 +30,8 @@ const Exercises = () => {
                         <div className="item" key={data.id}>
                             <p>{data.name} </p>
                             <div>
-                                <input type="number" min="1" placeholder="ex: 8" />
-                                <button onClick={handleAddExer}>Add</button>
+                                <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                                <button onClick={handleAddToWork}>Add</button>
                             </div>
                         </div>
                     )}
@@ -42,6 +42,6 @@ const Exercises = () => {
 }
 export default Exercises;
 
-const handleAddExer = () => {
-    alert("Added");
+const handleAddToWork = () => {
+    alert("Added to workout");
 }

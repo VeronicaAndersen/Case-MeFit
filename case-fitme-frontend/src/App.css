@@ -17,11 +17,19 @@ body {
     background-size: cover;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Playfair Display', serif;
 }
 
-p, a, button {
+p,
+a,
+button,
+#logout {
     font-family: 'Lustria', serif;
 }
 
@@ -32,6 +40,9 @@ h1 {
 }
 
 /*_______________ Buttons _________________*/
+button {
+    min-height: 40px;
+}
 
 .buttons {
     margin-top: 40vh;
@@ -85,6 +96,9 @@ h1 {
     height: calc(100% + 27px);
 }
 
+/* .goToExer{
+    height: 40px;
+} */
 /*______________ Keycloak Loading __________________*/
 
 .loading {
@@ -99,60 +113,6 @@ h1 {
     text-align: center;
 }
 
-/*______________ Items __________________*/
-
-.item{
-    background-color: #ececec;
-    box-shadow: var(--shadow);
-    width: 60vw;
-    height: 40px;
-    border-radius: 10px;
-    line-height: 40px;
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-}
-
-.item p{
-    margin-left: 20px;
-}
-
-.item button{
-    margin-right: 20px;
-    cursor: pointer;
-    background-color: var(--secondary);
-    border: none;
-    border-radius: 10px;
-}
-
-/*______________ Sidebar __________________*/
-
-.sidebar{
-    background-color: var(--primary);
-    width: 200px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: var(--shadow);
-}
-
-.side-item{
-    height: 60px;
-    line-height: 60px;
-    width: 100%;
-    text-align: center;
-}
-
-.side-item:hover{
-    background-color: var(--secondary);
-}
-
-.content{
-    position: absolute;
-    top: 80px;
-    left: 220px;
-}
 /*______________ Menu __________________*/
 
 nav {
@@ -233,23 +193,53 @@ a {
     border-top: 6px solid transparent;
 }
 
+/*______________ Sidebar __________________*/
+
+.sidebar {
+    background-color: var(--primary);
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+}
+
+.side-item {
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.side-item:hover {
+    background-color: var(--secondary);
+}
+
+.content {
+    position: absolute;
+    top: 80px;
+    left: 250px;
+    text-align: center;
+}
+
 /*______________ Todays list __________________*/
 
-.today-schedule li{
+.today-schedule li {
     list-style: none;
 }
 
-.workout{
+.workout {
     color: var(--primary);
     font-weight: 800;
 }
 
-.place{
+.place {
     font-weight: 300;
 }
 
-.time{
-font-weight: 700;
+.time {
+    font-weight: 700;
 }
 
 /*______________ Dropdown __________________*/
@@ -257,11 +247,11 @@ font-weight: 700;
 #test {
     position: relative;
     background: var(--secondary);
-    width: 80vw;
+    width: 60vw;
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 50px;    
+    line-height: 50px;
 }
 
 #text {
@@ -304,66 +294,83 @@ font-weight: 700;
     display: block;
 }
 
-/*______________ Save Goal Button __________________*/
-
-#submitbtn {
-    margin-top: 05vh;
-    display: flex;
-    margin-right: 20px;
-    cursor: pointer;
-    background-color: var(--secondary);
-    border: none;
-    border-radius: 10px;
-}
-
 
 /*______________ Input Form __________________*/
 
-.input-form {
+.input-form, .inputDate {
     background-color: #ececec;
     box-shadow: var(--shadow);
-    width: 60vw;
-    height: 40px;
+    width: 40vw;
+    height: 50px;
     border-radius: 10px;
-    line-height: 40px;
+    line-height: 50px;
     border: 1px solid var(--primary);
-    display: flex;
-    justify-content: space-between;
+    margin: 10px 0;
+    justify-content: center;
+    padding-left: 10px;
 }
 
-.input-form:focus {
+.input-form:focus, .inputDate:focus {
     outline: none;
 }
 
+.input-number, .input-number:focus{
+    background-color: #ececec;
+    border-radius: 5px;
+    width: 60px;
+    margin: 5px;
+    border: solid 2px var(--primary);
+    outline: none;
+}
 /*______________ Goal Box __________________*/
 
-#setgoalbtn {
-    margin-top: 05vh;
+.setgoalbtn {
+    margin: 10px 2px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    box-shadow: var(--shadow);
+}
+
+.setgoalbox {
+    background-color: #ececec;
+    box-shadow: var(--shadow);
+    width: 40vw;
+    height: 200px;
+    display: none;
+    border-radius: 10px;
+    line-height: 40px;
+    justify-content: space-between;
+}
+
+.setgoalbox p {
+    margin: 20px;
+}
+
+
+/*______________ Items __________________*/
+
+.item {
+    background-color: #ececec;
+    box-shadow: var(--shadow);
+    width: 60vw;
+    height: 50px;
+    border-radius: 10px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.item p {
+    margin-left: 20px;
+}
+
+.item button, #submitbtn {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);
     border: none;
     border-radius: 10px;
+    margin: 5px;
 }
-
-
-.setgoalbox{
-    background-color: #ececec;
-    box-shadow: var(--shadow);
-    width: 60vw;
-    height: 200px;
-
-
-    border-radius: 10px;
-    line-height: 40px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.setgoalbox p{
-    margin-left: 20px;
-    margin-top: 40px;
-}
-
-    
-    

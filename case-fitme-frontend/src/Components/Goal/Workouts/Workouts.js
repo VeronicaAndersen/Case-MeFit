@@ -40,6 +40,7 @@ const Workouts = () => {
                 {apiData.map(data =>
                         <div className="item" key={data.id}>
                             <p>{data.name} </p>
+                            <button key={data.id} onClick={handleAddToProg}>Add To Program</button>
                         </div>
                     )}
                 </div>
@@ -48,3 +49,6 @@ const Workouts = () => {
 }
 export default Workouts;
 
+const handleAddToProg = () => {
+    alert("Added to Program");
+}
