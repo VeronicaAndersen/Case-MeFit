@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 
-const Programs = () => {
+const Workouts = () => {
 
     const [apiData, setApiData] = useState([]);
+
     useEffect(() => {
-        fetch(`https://fitmecase.herokuapp.com/api/v1/program`)
+        fetch(`https://fitmecase.herokuapp.com/api/v1/workout`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -21,32 +22,33 @@ const Programs = () => {
                 console.log(err.message);
             });
     }, []);
-
     let navigate = useNavigate();
-    async function handleGoToWork(event) {
+    async function handleGoToExer(event) {
         event.preventDefault();
-        navigate("../workouts", { replace: true });
+        navigate("../exercise", { replace: true });
         // replace: true will replace the current entry in 
         // the history stack instead of adding a new one.
     }
-
     return (
         <>
-            <h1>Programs</h1>
-            <div className="items">
-                <div className="item">
-                    <p>There is no programs. Do you want to add some workouts?</p>
-                    <button onClick={handleGoToWork}>Go to Workouts</button>
-                </div>
-            </div>
-            <div className="items">
-                    {apiData.map(data =>
+                <h1>Workouts</h1>
+                <div className="items">
+                    <div className="item">
+                        <p>There is no workouts. Do you want to add some exercises?</p>
+                        <button onClick={handleGoToExer}>Exercise</button>
+                    </div>
+                {apiData.map(data =>
                         <div className="item" key={data.id}>
                             <p>{data.name} </p>
+                            <button key={data.id} onClick={handleAddToProg}>Add</button>
                         </div>
                     )}
                 </div>
         </>
     )
 }
-export default Programs;
+export default Workouts;
+
+const handleAddToProg = () => {
+    alert("Added to Program");
+}

@@ -15,8 +15,8 @@ const GoalDropdown = () => {
   return (
     <>
       {<div className="dropdown" onClick={showDropContent}>
-        <div className="dropdown-bar"
-          id="test"> <span id="text">Progress Goals</span>
+        <div className="dropdown-bar">
+          <span>Progress Goals</span>
           <span className="dropdown-arrow" id="arrow-progress"></span>
           <div id="drop" className="dropdown-content">
             <div>Content</div>

@@ -1,7 +1,7 @@
 import keycloak from "../../Keycloak/keycloak";
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../SideBar/Sidebar";
 
 const Navbar = () => {
     return (
@@ -24,7 +24,7 @@ const Navbar = () => {
                         <div className="menu-item"
                             id="profile"
                             to="/profile">
-                            <GiWeightLiftingUp /> Profile
+                            <GiWeightLiftingUp /> {keycloak.tokenParsed.name} 
                             <span className="dropdown-arrow"></span>
                             <div className="dropdown-profile">
                                 <div><Link 

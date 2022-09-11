@@ -1,4 +1,4 @@
-import Exercises from "../../Components/Goal/Exercises/Exercises"
+import Exercises from "../../Components/SideBar/Exercises/Exercises"
 import keycloak from "../../Keycloak/keycloak";
 
 const Exercise = () => {

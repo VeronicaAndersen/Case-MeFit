@@ -1,4 +1,4 @@
-import keycloak from "../../../Keycloak/keycloak";
+import keycloak from "../../Keycloak/keycloak";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
 
@@ -8,7 +8,7 @@ const Sidebar = () => {
                 <div className="sidebar">
                     <Link className="side-item"
                         id="dashboard"
-                        to="/goalsdashboard">
+                        to="/dashboard">
                         Dashboard
                     </Link>
                     <Link className="side-item"

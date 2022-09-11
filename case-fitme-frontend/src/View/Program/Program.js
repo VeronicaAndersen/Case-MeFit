@@ -1,4 +1,4 @@
-import Programs from "../../Components/Goal/Programs/Programs"
+import Programs from "../../Components/SideBar/Programs/Programs"
 import keycloak from "../../Keycloak/keycloak";
 
 const Program = () => {
