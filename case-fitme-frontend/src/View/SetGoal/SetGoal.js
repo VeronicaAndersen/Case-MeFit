@@ -1,4 +1,4 @@
-import SetGoals from "../../Components/Goal/SetGoal/SetGoal"
+import SetGoals from "../../Components/SideBar/SetGoal/SetGoal"
 import keycloak from "../../Keycloak/keycloak"
 
 const SetGoal = () => {
