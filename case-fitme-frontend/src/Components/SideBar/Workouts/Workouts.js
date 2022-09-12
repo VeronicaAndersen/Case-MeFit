@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 
+var counter = 0;
 const Workouts = () => {
 
     const [apiData, setApiData] = useState([]);
@@ -31,19 +32,30 @@ const Workouts = () => {
     }
     return (
         <>
-                <h1>Workouts</h1>
-                <div className="items">
-                    <div className="item">
-                        <p>There is no workouts. Do you want to add some exercises?</p>
-                        <button onClick={handleGoToExer}>Exercise</button>
-                    </div>
-                {apiData.map(data =>
-                        <div className="item" key={data.id}>
-                            <p>{data.name} </p>
-                            <button key={data.id} onClick={handleAddToProg}>Add</button>
-                        </div>
-                    )}
-                </div>
+            <h1>Workouts</h1>
+            <div className="items">
+                {apiData.map((data) => {
+                    if (data.complete === true || data.complete === false) {
+                        counter++;
+                        return (
+                            <div className="item" key={data.id}>
+                                <p>{data.name} </p>
+                                <button key={data.id} onClick={handleAddToProg}>Add</button>
+                            </div>
+                        )
+                    }
+                    if (counter === 0) {
+                        return (
+                            <div className="item">
+                                <p>There is no workouts. Do you want to add some exercises?</p>
+                                <button onClick={handleGoToExer}>Exercise</button>
+                            </div>
+                        )
+                    }
+                })}
+
+
+            </div>
         </>
     )
 }

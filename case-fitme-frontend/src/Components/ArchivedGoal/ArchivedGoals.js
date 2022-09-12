@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+var counter = 0;
 const ArchivedGoals = () => {
 
     const [apiData, setApiData] = useState([]);
-
     useEffect(() => {
         fetch(`https://fitmecase.herokuapp.com/api/v1/workout`)
             .then((response) => {
@@ -26,10 +26,11 @@ const ArchivedGoals = () => {
         <>
             <h1>Archived Goals</h1>
 
-            {apiData.map((data, index) => {
+            {apiData.map((data) => {
                 if (data.complete === true) {
+                    counter++;
                     return (
-                        <div key={index} className="weekly-schedule">
+                        <div key={data.id} className="weekly-schedule">
                             <div className="weekly-todo">
                                 <p className="workout">{data.name}</p>
                                 {<div>
@@ -39,6 +40,14 @@ const ArchivedGoals = () => {
                                 <div className="circle" id='item-complete'></div>
                             </div>
                         </div>)
+                }else if (counter === 0) {
+                    return (
+                        <div className="weekly-schedule" key="0">
+                            <div className="weekly-todo">
+                                <p>No archived yet!</p>
+                            </div>
+                        </div>
+                    )
                 }
             })}
         </>

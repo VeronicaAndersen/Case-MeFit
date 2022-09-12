@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+var counter = 0;
 const Exercises = () => {
 
     const [apiData, setApiData] = useState([]);
@@ -26,15 +27,28 @@ const Exercises = () => {
             <div className="content">
                 <h1>Exercises</h1>
                 <div className="items">
-                    {apiData.map(data =>
-                        <div className="item" key={data.id}>
-                            <p>{data.name} </p>
-                            <div>
-                                <input className='input-number' type="number" min="1" placeholder="ex: 8" />
-                                <button onClick={handleAddToWork}>Add</button>
-                            </div>
-                        </div>
-                    )}
+                    {apiData.map((data) => {
+                        if (data.id != null) {
+                            counter++;
+                            return (
+                                <div className="item" key={data.id}>
+                                    <p>{data.name} </p>
+                                    <div>
+                                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                                        <button onClick={handleAddToWork}>Add</button>
+                                    </div>
+                                </div>
+                            )
+                        } else if (counter === 0) {
+                            return (
+                                <div className="weekly-schedule" key="0">
+                                    <div className="weekly-todo">
+                                        <p>No archived yet!</p>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })}
                 </div>
             </div>
         </>
