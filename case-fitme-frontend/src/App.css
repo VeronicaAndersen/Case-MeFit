@@ -42,6 +42,7 @@ h1 {
 /*_______________ Buttons _________________*/
 button {
     min-height: 40px;
+    box-shadow: var(--shadow);
 }
 
 .buttons {
@@ -96,7 +97,10 @@ button {
     height: calc(100% + 27px);
 }
 
-.item button, #submitbtn, #contri-btn, #fa-btn {
+.item button,
+#submitbtn,
+#contri-btn,
+#fa-btn {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);
@@ -104,6 +108,7 @@ button {
     border-radius: 10px;
     margin: 5px;
 }
+
 /*______________ Keycloak Loading __________________*/
 
 .loading {
@@ -114,8 +119,32 @@ button {
     height: 40px;
     line-height: 40px;
     margin: auto auto;
-    margin-top: 300px;
+    margin-top: 40%;
     text-align: center;
+}
+
+#spin-loader {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
 }
 
 /*______________ Menu __________________*/
@@ -230,21 +259,57 @@ a {
 
 /*______________ Todays list __________________*/
 
+.today-schedule{
+    align-items: center;
+}
+
 .today-schedule li {
     list-style: none;
 }
 
 .workout {
-    color: var(--primary);
-    font-weight: 800;
+    color: var(--secondary);
+    font-weight:900;
 }
 
-.place {
+.type {
     font-weight: 300;
 }
 
 .time {
     font-weight: 700;
+}
+
+/*______________ Weekly Goals __________________*/
+
+.weekly-schedule{
+    display: block;
+    flex-direction: column;
+    background-color: #ececec;
+    width: 40vw;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin: auto auto;
+}
+.weekly-todo {
+    margin: 10px;
+}
+
+.weekly-todo p {
+    margin: 0;
+    text-align: start;
+}
+
+.circle {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border: #FFD7B2 3px solid;
+    border-radius: 20px;
+    float: right;
+    top: -40px;
+    right: 10px;
 }
 
 /*______________ Dropdown __________________*/
@@ -254,8 +319,7 @@ a {
     background: var(--secondary);
     width: 60vw;
     height: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto;
     line-height: 50px;
     cursor: pointer;
 }
@@ -291,7 +355,8 @@ a {
 
 /*______________ Input Form __________________*/
 
-.input-form, .inputDate {
+.input-form,
+.inputDate {
     background-color: #ececec;
     box-shadow: var(--shadow);
     width: 40vw;
@@ -302,20 +367,26 @@ a {
     border-bottom: 3px solid var(--primary);
     margin: 10px 0;
     justify-content: center;
-    padding-left: 10px;
+    padding: 0 10px;
 }
 
-.input-form:focus, .inputDate:focus {
+.input-form:focus,
+.inputDate:focus {
     outline: none;
 }
 
-.input-number, .input-number:focus{
+.input-number,
+.input-number:focus {
     background-color: #ececec;
     border-radius: 5px;
     width: 60px;
     margin: 5px;
     border: solid 2px var(--primary);
     outline: none;
+}
+.profile-input{
+    display: flex;
+    flex-direction: column;
 }
 /*______________ Goal Box __________________*/
 
@@ -360,4 +431,6 @@ a {
 .item p {
     margin-left: 20px;
 }
+
+
 

@@ -10,7 +10,7 @@ const Navbar = () => {
                 <Link className="menu-item"
                     id="logo"
                     to="/">
-                    <strong>FitMe</strong>
+                    <strong>MeFit</strong>
                 </Link>
                 {keycloak.authenticated && (
                     <Link className="menu-item"

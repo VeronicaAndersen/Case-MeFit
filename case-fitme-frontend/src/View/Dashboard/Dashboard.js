@@ -1,12 +1,15 @@
 import Dashboards from "../../Components/SideBar/Dashboards/Dashboards";
+import keycloak from "../../Keycloak/keycloak";
 
 const Dashboard = () => {
 
     return (
         <>
-            <div className="content">
-                <Dashboards />
-            </div>
+            {keycloak.authenticated && (
+                <div className="content">
+                    <Dashboards />
+                </div>
+            )}
         </>
     )
 }
