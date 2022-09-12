@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-const WeeklyLists = () => {
+
+const ArchivedGoals = () => {
 
     const [apiData, setApiData] = useState([]);
 
@@ -19,14 +20,16 @@ const WeeklyLists = () => {
             .catch((err) => {
                 console.log(err.message);
             });
-    }, []);
+    }, [])
 
     return (
         <>
-            {apiData.map(data => {
+            <h1>Archived Goals</h1>
+
+            {apiData.map((data, index) => {
                 if (data.complete === true) {
                     return (
-                        <div key={data.id} className="weekly-schedule">
+                        <div key={index} className="weekly-schedule">
                             <div className="weekly-todo">
                                 <p className="workout">{data.name}</p>
                                 {<div>
@@ -36,21 +39,10 @@ const WeeklyLists = () => {
                                 <div className="circle" id='item-complete'></div>
                             </div>
                         </div>)
-                } else {
-                    return (
-                        <div key={data.id} className="weekly-schedule">
-                            <div className="weekly-todo">
-                                <p className="workout">{data.name}</p>
-                                {<div>
-                                    <p className="type">{data.type}</p>
-
-                                </div>}
-                                <div className="circle"></div>
-                            </div>
-                        </div>)
                 }
             })}
         </>
     )
 }
-export default WeeklyLists;
+export default ArchivedGoals;
+

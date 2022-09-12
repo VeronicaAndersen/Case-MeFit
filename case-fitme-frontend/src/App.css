@@ -313,10 +313,12 @@ a {
     border: #FFD7B2 3px solid;
     border-radius: 20px;
     float: right;
-    top: -40px;
+    top: -30px;
     right: 10px;
 }
-
+#item-complete{
+    border-color: var(--primary);
+}
 /*______________ Dropdown __________________*/
 
 .dropdown-bar {
