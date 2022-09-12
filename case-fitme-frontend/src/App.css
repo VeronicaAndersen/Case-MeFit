@@ -100,13 +100,19 @@ button {
 .item button,
 #submitbtn,
 #contri-btn,
-#fa-btn {
+#fa-btn,
+#save-btn {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);
     border: none;
     border-radius: 10px;
     margin: 5px;
+}
+
+#save-btn{
+    background-color: var(--primary);
+    font-weight: 900;
 }
 
 /*______________ Keycloak Loading __________________*/
@@ -290,7 +296,6 @@ a {
     height: 50px;
     border-radius: 10px;
     box-shadow: var(--shadow);
-    margin: auto auto;
 }
 .weekly-todo {
     margin: 10px;
