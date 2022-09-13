@@ -9,6 +9,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": "16.15.1",
+    "npm": "8.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VeronicaAndersen/Case-MeFit-Frontend.git"
