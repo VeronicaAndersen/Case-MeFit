@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "16.15.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VeronicaAndersen/Case-MeFit-Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VeronicaAndersen/Case-MeFit-Frontend/issues"
+  },
+  "homepage": "https://github.com/VeronicaAndersen/Case-MeFit-Frontend#readme"
+}
