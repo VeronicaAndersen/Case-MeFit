@@ -110,7 +110,12 @@ button {
     margin: 5px;
 }
 
-#save-btn{
+.none {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    justify-content: center !important;
+}
+#save-btn {
     background-color: var(--primary);
     font-weight: 900;
 }
@@ -135,22 +140,29 @@ button {
     left: 50%;
     width: 90px;
     height: 90px;
-    margin:-60px 0 0 -60px;
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
+    margin: -60px 0 0 -60px;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
 }
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 /*______________ Menu __________________*/
@@ -265,7 +277,7 @@ a {
 
 /*______________ Todays list __________________*/
 
-.today-schedule{
+.today-schedule {
     align-items: center;
 }
 
@@ -275,7 +287,7 @@ a {
 
 .workout {
     color: var(--secondary);
-    font-weight:900;
+    font-weight: 900;
 }
 
 .type {
@@ -288,7 +300,7 @@ a {
 
 /*______________ Weekly Goals __________________*/
 
-.weekly-schedule{
+.weekly-schedule {
     display: block;
     flex-direction: column;
     background-color: #ececec;
@@ -297,6 +309,7 @@ a {
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
+
 .weekly-todo {
     margin: 10px;
 }
@@ -316,9 +329,11 @@ a {
     top: -30px;
     right: 10px;
 }
-#item-complete{
+
+#item-complete {
     border-color: var(--primary);
 }
+
 /*______________ Dropdown __________________*/
 
 .dropdown-bar {
@@ -391,10 +406,12 @@ a {
     border: solid 2px var(--primary);
     outline: none;
 }
-.profile-input{
+
+.profile-input {
     display: flex;
     flex-direction: column;
 }
+
 /*______________ Goal Box __________________*/
 
 .setgoalbtn {
@@ -440,4 +457,26 @@ a {
 }
 
 
+.close{
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: 900;
+}
 
+#createExercise {
+    display: none;
+    position: absolute;
+    background-color: #ececec;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    top: 0;
+    left: 0;
+    padding-bottom: 10px;
+}
+
+#details{
+    display: none;
+}
