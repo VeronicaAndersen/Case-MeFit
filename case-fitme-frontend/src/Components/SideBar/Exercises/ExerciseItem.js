@@ -18,9 +18,7 @@ const ExerciseItem = ({ exercise }) => {
             name: name,
             description: exercise.description,
             targetMuscleGroup: exercise.targetMuscleGroup
-
         }
-
         updateExercise(exercise, exercise.id)
         document.getElementById("details").style.display = "none"
     }
@@ -28,9 +26,11 @@ const ExerciseItem = ({ exercise }) => {
     const handleName = (event) => {
         setName(event.target.value);
     }
+
     const handleDescription = (event) => {
         setDescription(event.target.value);
     }
+
     const handleTargetMuscleGroup = (event) => {
         setTargetMuscleGroup(event.target.value);
     }
@@ -44,24 +44,23 @@ const ExerciseItem = ({ exercise }) => {
             <>
                 <div className="item" key={exercise.id}>
                     <p>{exercise.name}</p>
-                    <form onSubmit={handleSubmit(onUpdate)} id="details">
-                        <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
-                        <div id={exercise.id}>
-                            <input className='input-form' type="text" name="description" value={description} onChange={event => handleDescription(event)} />
-                            <input className='input-form' type="text" name="targetMuscleGroup" value={targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
 
-                        </div>
-                        <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
-                    </form>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
-                        <button onClick={handleEdit} type="submit" value={exercise.id}>Edit</button>
-                    </span>
                     <div>
                         <input className='input-number' type="number" min="1" placeholder="ex: 8" />
                     </div>
+                    <span>
+                        <button onClick={handleDelete}>Delete</button>
+                        <button onClick={handleAddToWork}>Add</button>
+                    </span>
                 </div>
+                <form onSubmit={handleSubmit(onUpdate)}>
+                    <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
+                    <div id={exercise.id}>
+                        <input className='input-form' type="text" name="description" value={description} onChange={event => handleDescription(event)} />
+                        <input className='input-form' type="text" name="targetMuscleGroup" value={targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
+                    </div>
+                    <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
+                </form>
             </>
         )
     } else if (counter === 0) {
@@ -73,15 +72,10 @@ const ExerciseItem = ({ exercise }) => {
             </div>
         )
     }
-
 }
 
 export default ExerciseItem;
 
 const handleAddToWork = () => {
     alert("Added to workout");
-}
-
-const handleEdit = () => {
-    document.getElementById("details").style.display = "block";
 }
