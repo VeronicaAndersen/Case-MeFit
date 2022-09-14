@@ -477,7 +477,6 @@ a {
     padding-bottom: 10px;
 }
 
-.details{
-    background-color: aqua;
+#details{
     display: none;
 }
