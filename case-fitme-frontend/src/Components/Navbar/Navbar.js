@@ -41,6 +41,7 @@ const Navbar = () => {
 
             </nav>
             <Sidebar />
+                {keycloak.token}
 
         </>
     )

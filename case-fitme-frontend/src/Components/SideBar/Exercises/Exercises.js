@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { createExercise } from '../../Api/Exercise';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 var counter = 0;
 const Exercises = () => {
-    const [apiData, setApiData] = useState([{}]);
+    const [apiData, setApiData] = useState([]);
+    const { register, handleSubmit } = useForm()
+    const [apiError, setApiError] = useState(null)
+
     useEffect(() => {
         fetch(`${apiUrl}/exercise`)
             .then((response) => {
@@ -23,13 +28,26 @@ const Exercises = () => {
             });
     }, []);
 
+
+    const onSubmit = async (exercise) => {
+        const [error, userResponse] = await createExercise(exercise)
+
+        if (error !== null) {
+            setApiError(error)
+        }
+        if (userResponse !== null) {
+            window.location.reload();
+        }
+    }
     return (
         <>
             <div className="content">
                 <h1>Exercises</h1>
                 <div className="items">
+
                     {apiData.map((data) => {
                         if (data.id != null) {
+
                             counter++;
                             return (
                                 <div className="item" key={data.id}>
@@ -51,6 +69,13 @@ const Exercises = () => {
                         }
                     })}
                 </div>
+
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input className='input-form' type="text" placeholder='Name' {...register("name")} />
+                    <input className='input-form' type="text" placeholder='Description' {...register("description")} />
+                    <input className='input-form' type="text" placeholder='Target muscle group' {...register("target_muscle_group")} /><br />
+                    {<input type="submit" value="Submit" />}
+                </form>
             </div>
         </>
     )
