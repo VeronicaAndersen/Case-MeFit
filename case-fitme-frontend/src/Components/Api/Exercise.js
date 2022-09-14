@@ -1,4 +1,6 @@
 import { createHeaders } from '.'
+import axios from "axios";
+
 const apiUrl = process.env.REACT_APP_API_URL
 
 //Create a new user (takes in array of exercise information)
@@ -26,25 +28,18 @@ export const createExercise = async (exerciseInfo) => {
 //Update an existing exercise
 export const updateExercise = async (exerciseInfo, exerciseId) => {
     try {
-        const response = await fetch(`${apiUrl}/exercises/${exerciseId}`, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ 
-                exerciseId: exerciseInfo.exerciseId, 
-                exerciseName: exerciseInfo.exerciseName, 
-                exerciseState: exerciseInfo.exerciseState, 
-                description: exerciseInfo.description, 
-                nwLat: exerciseInfo.nwLat, 
-                nwLng: exerciseInfo.nwLng, 
-                seLat: exerciseInfo.seLat, 
-                seLng: exerciseInfo.seLng 
-            })
-        })
-        if (!response.ok) {
-            throw new Error('Could not update the exercise')
+        if(exerciseId === undefined){
+
+            throw new Error("Game ID is undefined");
+
         }
-        const data = await response.json()
-        return [ null, data ]
+        const response = await axios.put(`${apiUrl}/exercise/${exerciseId}`, exerciseInfo, {
+            headers: {'Content-Type': 'application/json'}
+            
+        })
+        console.log("hesadö");
+
+        return [ null, response.data ]
     }
     catch (error) {
         return [ error.message, [] ]
@@ -55,7 +50,7 @@ export const updateExercise = async (exerciseInfo, exerciseId) => {
 //Delete an existing exercise (takes in a exercise object)
 export const deleteExercise = async (exerciseId) => {
     try {
-        const response = await fetch(`${apiUrl}/exercises/${exerciseId}`, {
+        const response = await fetch(`${apiUrl}/exercise/${exerciseId}`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
