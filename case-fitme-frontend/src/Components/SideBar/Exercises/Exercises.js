@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 var counter = 0;
 const Exercises = () => {
-
-    const [apiData, setApiData] = useState([]);
+    const [apiData, setApiData] = useState([{}]);
     useEffect(() => {
-        fetch(`https://fitmecase.herokuapp.com/api/v1/exercise`)
+        fetch(`${apiUrl}/exercise`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
