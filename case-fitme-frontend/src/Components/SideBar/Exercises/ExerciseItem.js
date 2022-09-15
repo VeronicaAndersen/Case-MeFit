@@ -37,6 +37,9 @@ const ExerciseItem = ({ exercise }) => {
 
     const handleDelete = () => {
         deleteExercise(exercise.id);
+        setTimeout(function(){
+            window.location.reload();
+            }, 1000);
     }
 
     if (exercise.id != null) {

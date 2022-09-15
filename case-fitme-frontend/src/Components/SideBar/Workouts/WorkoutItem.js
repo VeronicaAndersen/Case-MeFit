@@ -37,6 +37,9 @@ const WorkoutItem = ({ workout }) => {
 
     const handleDelete = () => {
         deleteWorkout(workout.id);
+        setTimeout(function(){
+            window.location.reload();
+            }, 1000);
     }
 
     if (workout.id != null) {
