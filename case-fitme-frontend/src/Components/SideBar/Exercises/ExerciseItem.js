@@ -5,13 +5,11 @@ import { deleteExercise, updateExercise } from '../../Api/Exercise';
 
 const ExerciseItem = ({ exercise }) => {
 
-    const [apiError, setApiError] = useState(null);
-    const { handleSubmit, formState: { errors } } = useForm()
+    const { handleSubmit } = useForm()
     const [name, setName] = useState(exercise.name);
     const [targetMuscleGroup, setTargetMuscleGroup] = useState(exercise.targetMuscleGroup);
     const [description, setDescription] = useState(exercise.description);
 
-    var counter = 0;
     const onUpdate = () => {
         exercise.name = name;
         const newExercise = {
@@ -37,6 +35,9 @@ const ExerciseItem = ({ exercise }) => {
 
     const handleDelete = () => {
         deleteExercise(exercise.id);
+        setTimeout(function(){
+            window.location.reload();
+            }, 1000);
     }
 
     if (exercise.id != null) {
@@ -54,16 +55,16 @@ const ExerciseItem = ({ exercise }) => {
                     </span>
                 </div>
                 <form onSubmit={handleSubmit(onUpdate)}>
-                    <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
+                    <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
                     <div id={exercise.id}>
-                        <input className='input-form' type="text" name="description" value={description} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="targetMuscleGroup" value={targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
+                        <input className='input-form' type="text" name="description" value={exercise.description} onChange={event => handleDescription(event)} />
+                        <input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
                     </div>
                     <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
                 </form>
             </>
         )
-    } else if (counter === 0) {
+    }else {
         return (
             <div className="weekly-schedule" key="0">
                 <div className="weekly-todo">

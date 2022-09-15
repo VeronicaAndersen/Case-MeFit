@@ -1,15 +1,15 @@
 import { createHeaders } from '.'
 import axios from "axios";
+import keycloak from '../../Keycloak/keycloak'
 
 const apiUrl = process.env.REACT_APP_API_URL
-
 //Create a new user (takes in array of exercise information)
 export const createExercise = async (exerciseInfo) => {
     try {
-        console.log(`${apiUrl}/exercise`);
         const response = await fetch(`${apiUrl}/exercise`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+            'Authorization': `Bearer ${keycloak.token}`},
             body: JSON.stringify(exerciseInfo)
         })
         if (!response.ok) {
@@ -34,7 +34,7 @@ export const updateExercise = async (exerciseInfo, exerciseId) => {
 
         }
         const response = await axios.put(`${apiUrl}/exercise/${exerciseId}`, exerciseInfo, {
-            headers: {'Content-Type': 'application/json'}
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`}
             
         })
         console.log("hesadö");
@@ -52,7 +52,7 @@ export const deleteExercise = async (exerciseId) => {
     try {
         const response = await fetch(`${apiUrl}/exercise/${exerciseId}`, {
             method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`},
             body: JSON.stringify({
                 exercises: []
             })

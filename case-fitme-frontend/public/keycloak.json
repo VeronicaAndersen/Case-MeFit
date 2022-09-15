@@ -2,7 +2,7 @@
   "realm": "case-mefit",
   "auth-server-url": "https://mefitkeycloak.herokuapp.com/auth/",
   "ssl-required": "external",
-  "resource": "mefit-local",
+  "resource": "mefit-js",
   "public-client": true,
   "confidential-port": 0
 }
