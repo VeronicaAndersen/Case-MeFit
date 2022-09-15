@@ -1,14 +1,41 @@
 import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { deleteWorkout, updateWorkout } from '../../Api/Workout';
+import { uppdateProgram } from '../../Api/Program';
+import keycloak from '../../../Keycloak/keycloak';
+
+const apiUrl = process.env.REACT_APP_API_URL
+
+const WorkoutItem = ({ workout, program }) => {
 
 
-const WorkoutItem = ({ workout }) => {
-
-    const { handleSubmit } = useForm()
     const [name, setName] = useState(workout.name);
     const [complete, setComplete] = useState(workout.complete);
     const [type, setType] = useState(workout.type);
+    const [apiData, setApiData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { register, handleSubmit } = useForm();
+    const [apiError, setApiError] = useState(null);
+
+    useEffect(() => {
+        const headers = { 'Authorization': `Bearer ${keycloak.token}` };
+        fetch(`${apiUrl}/workout`, { headers })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                return response.json();
+            })
+            .then((program) => {
+                setApiData(program);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
 
     const onUpdate = () => {
         workout.name = name;
@@ -42,18 +69,29 @@ const WorkoutItem = ({ workout }) => {
         }, 1000);
     }
 
+    const handleAddToProgram = () => {
+        uppdateProgram(1, workout)
+    }
+
+
     if (workout.id != null) {
         return (
             <>
                 <div className='details-item'>
                     <div className="item" key={workout.id}>
                         <p>{workout.name}</p>
-                        <div>
-                            <input className='input-number' type="number" min="1" placeholder="ex: 8" />
-                        </div>
                         <span>
                             <button onClick={handleDelete}>Delete</button>
-                            <button onClick={handleAddToWork}>Add</button>
+
+                            <select name="programs" id="programs">
+                                {apiData.map((program) => {
+                                    //console.log(program);
+                                    return (
+                                        <option value={program.id}>{program.name}</option>
+                                    )
+                                })}
+                            </select>
+                            <button onClick={handleAddToProgram}>Add</button>
                         </span>
                     </div>
                     <span className='details'>
@@ -85,6 +123,3 @@ const WorkoutItem = ({ workout }) => {
 
 export default WorkoutItem;
 
-const handleAddToWork = () => {
-    alert("Added to workout");
-}

@@ -15,7 +15,7 @@ const Workouts = () => {
 
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
-        fetch(`${apiUrl}/workout`, {headers})
+        fetch(`${apiUrl}/workout`, { headers })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -50,6 +50,13 @@ const Workouts = () => {
         return (
             <>
                 <h1>Workouts</h1>
+                    <select name="programs" id="programs">
+                        {loading === false && apiData.map((workout) => {
+                            return (
+                                <option value={workout.id}>{workout.name}</option>
+                            )
+                        })}
+                    </select>
                 <div className="items">
                     <div className='item none'>
                         <button onClick={handleAddWorkout}>Create new Workout</button>
@@ -65,11 +72,12 @@ const Workouts = () => {
                         </div>
                     </form>
                     {loading === false && apiData.map((data) => {
-                            return (
-                                <div key={data.id} >
-                                    <WorkoutItem workout={data} />
-                                </div>)
-                        })}
+                        return (
+                            <div key={data.id} >
+                                <WorkoutItem workout={data} />
+
+                            </div>)
+                    })}
                 </div>
             </>
         )
