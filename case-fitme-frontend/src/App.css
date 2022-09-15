@@ -4,7 +4,7 @@
     --primary: #1C5182;
     --secondary: #BCD3C4;
     --shadow: rgba(110, 112, 114, 0.3) 0px 8px 24px;
-    --bg-content:  #ececec;
+    --bg-content: #ececec;
 }
 
 * {
@@ -12,7 +12,7 @@
 }
 
 body {
-    background-image: url("/public/training.jpg"); 
+    background-image: url("/public/training.jpg");
     background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
@@ -112,6 +112,24 @@ button {
     margin: 5px;
 }
 
+.item button:hover,
+#submitbtn:hover,
+#contri-btn:hover,
+#fa-btn:hover,
+#save-btn:hover,
+.save-btn:hover {
+    background-color: #8eaa98 !important;
+}
+
+.delete-btn {
+    background-color: transparent !important;
+    border: #b45454 solid 2px !important;
+}
+
+.delete-btn:hover {
+    background-color: #b45454 !important;
+}
+
 .none {
     background-color: transparent !important;
     box-shadow: none !important;
@@ -188,7 +206,8 @@ nav {
     color: #fff;
 }
 
-.menu-item:hover, .side-item:hover {
+.menu-item:hover,
+.side-item:hover {
     background-color: var(--secondary);
     color: #000;
 }
@@ -308,7 +327,7 @@ a {
 .weekly-schedule {
     display: block;
     flex-direction: column;
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     width: 40vw;
     height: 50px;
     border-radius: 10px;
@@ -365,7 +384,7 @@ a {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     width: 60vw;
     box-shadow: var(--shadow);
     z-index: 1;
@@ -384,7 +403,7 @@ a {
 
 .input-form,
 .inputDate {
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 40vw;
     height: 50px;
@@ -404,7 +423,7 @@ a {
 
 .input-number,
 .input-number:focus {
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     border-radius: 5px;
     width: 60px;
     margin: 5px;
@@ -422,13 +441,13 @@ a {
 .setgoalbtn {
     margin: 10px 2px;
     cursor: pointer;
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     border: none;
     box-shadow: var(--shadow);
 }
 
 .setgoalbox {
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 40vw;
     height: 200px;
@@ -446,7 +465,7 @@ a {
 /*______________ Items __________________*/
 
 .item {
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 60vw;
     min-height: fit-content;
@@ -475,7 +494,7 @@ a {
 #createProgram {
     display: none;
     position: absolute;
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     border-radius: 10px;
     box-shadow: var(--shadow);
     top: 0;
@@ -492,7 +511,7 @@ a {
 }
 
 .details {
-    background-color:  var(--bg-content);
+    background-color: var(--bg-content);
     border-radius: 10px;
     box-shadow: var(--shadow);
     padding: 0 20px;
@@ -504,12 +523,43 @@ a {
     background-color: #a5001b;
     word-break: break-all;
 }
-.details-item{
+
+.details-item {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.updateForm{
-    
+select {
+    /* appearance: none; */
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    width: fit-content;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+}
+
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }

@@ -82,9 +82,9 @@ const WorkoutItem = ({ workout, program }) => {
                     <div className="item" key={workout.id}>
                         <p>{workout.name}</p>
                         <span>
-                            <button onClick={handleDelete}>Delete</button>
+                            <button className='delete-btn' onClick={handleDelete}>Delete</button>
 
-                            <select name="programs" id="programs" >
+                            <select name="programs" className='select' id="programs" >
                                 {apiData.map((program) => {
                                     //console.log(program);
                                     return (

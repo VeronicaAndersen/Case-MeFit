@@ -46,11 +46,8 @@ const ExerciseItem = ({ exercise }) => {
                 <div className='details-item'>
                     <div className="item" key={exercise.id}>
                         <p>{exercise.name}</p>
-                        <div>
-                            <input className='input-number' type="number" min="1" placeholder="ex: 8" />
-                        </div>
                         <span>
-                            <button onClick={handleDelete}>Delete</button>
+                            <button className='delete-btn' onClick={handleDelete}>Delete</button>
                             <button onClick={handleAddToWork}>Add</button>
                         </span>
                     </div>
