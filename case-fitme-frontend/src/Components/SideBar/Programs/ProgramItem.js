@@ -37,6 +37,7 @@ const ProgramItem = ({ program }) => {
     if (program.id != null) {
         return (
             <>
+            <div className='details-item'>
                 <div className="item" key={program.id}>
                     <p>{program.name}</p>
 
@@ -46,6 +47,12 @@ const ProgramItem = ({ program }) => {
                     <span>
                         <button onClick={handleDelete}>Delete</button>
                         <button onClick={handleAddToWork}>Add</button>
+                    </span>
+                </div>
+                <span className='details'>
+                        <h3>Details</h3>
+                        <p>Name: {program.name} </p>
+                        <p>Category: {program.type}</p>
                     </span>
                 </div>
                 <form onSubmit={handleSubmit(onUpdate)}>

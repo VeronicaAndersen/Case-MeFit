@@ -35,23 +35,30 @@ const ExerciseItem = ({ exercise }) => {
 
     const handleDelete = () => {
         deleteExercise(exercise.id);
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.reload();
-            }, 1000);
+        }, 1000);
     }
 
     if (exercise.id != null) {
         return (
             <>
-                <div className="item" key={exercise.id}>
-                    <p>{exercise.name}</p>
-
-                    <div>
-                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                <div className='details-item'>
+                    <div className="item" key={exercise.id}>
+                        <p>{exercise.name}</p>
+                        <div>
+                            <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                        </div>
+                        <span>
+                            <button onClick={handleDelete}>Delete</button>
+                            <button onClick={handleAddToWork}>Add</button>
+                        </span>
                     </div>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
+                    <span className='details'>
+                        <h3>Details</h3>
+                        <p>Name: {exercise.name} </p>
+                        <p>Description: {exercise.description}</p>
+                        <p>Target Muscle Group: {exercise.targetMuscleGroup}</p>
                     </span>
                 </div>
                 <form onSubmit={handleSubmit(onUpdate)}>
@@ -64,7 +71,7 @@ const ExerciseItem = ({ exercise }) => {
                 </form>
             </>
         )
-    }else {
+    } else {
         return (
             <div className="weekly-schedule" key="0">
                 <div className="weekly-todo">

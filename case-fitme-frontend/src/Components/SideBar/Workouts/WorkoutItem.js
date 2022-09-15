@@ -5,7 +5,7 @@ import { deleteWorkout, updateWorkout } from '../../Api/Workout';
 
 const WorkoutItem = ({ workout }) => {
 
-    const { handleSubmit} = useForm()
+    const { handleSubmit } = useForm()
     const [name, setName] = useState(workout.name);
     const [complete, setComplete] = useState(workout.complete);
     const [type, setType] = useState(workout.type);
@@ -18,47 +18,55 @@ const WorkoutItem = ({ workout }) => {
             complete: workout.complete
         }
         updateWorkout(workout, workout.id)
-        document.getElementById("details").style.display = "none"
+        setTimeout(function () {
+            window.location.reload();
+        }, 5000);
     }
 
     const handleName = (event) => {
         setName(event.target.value);
     }
 
-    const handleDescription = (event) => {
+    const handleType = (event) => {
         setType(event.target.value);
     }
 
-    const handleTargetMuscleGroup = (event) => {
+    const handleComplete = (event) => {
         setComplete(event.target.value);
     }
 
     const handleDelete = () => {
         deleteWorkout(workout.id);
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.reload();
-            }, 1000);
+        }, 1000);
     }
 
     if (workout.id != null) {
         return (
             <>
-                <div className="item" key={workout.id}>
-                    <p>{workout.name}</p>
-
-                    <div>
-                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                <div className='details-item'>
+                    <div className="item" key={workout.id}>
+                        <p>{workout.name}</p>
+                        <div>
+                            <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                        </div>
+                        <span>
+                            <button onClick={handleDelete}>Delete</button>
+                            <button onClick={handleAddToWork}>Add</button>
+                        </span>
                     </div>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
+                    <span className='details'>
+                        <h3>Details</h3>
+                        <p>Name: {workout.name} </p>
+                        <p>Type: {workout.type}</p>
                     </span>
                 </div>
                 <form onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={workout.id}>
-                        <input className='input-form' type="text" name="type" value={type} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleTargetMuscleGroup(event)} />
+                        <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />
+                        <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} />
                     </div>
                     <button type="submit" onClick={onUpdate} value={workout.id}>Save</button>
                 </form>

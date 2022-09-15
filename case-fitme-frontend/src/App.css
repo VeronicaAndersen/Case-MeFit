@@ -487,8 +487,11 @@ a {
     margin: 5px;
 }
 
-#details {
-    display: none;
+.details {
+    background-color: #ececec;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 0 20px;
 }
 
 .token {
@@ -496,4 +499,7 @@ a {
     height: fit-content;
     background-color: #a5001b;
     word-break: break-all;
+}
+.details-item{
+    display: flex;
 }

@@ -29,16 +29,11 @@ export const createExercise = async (exerciseInfo) => {
 export const updateExercise = async (exerciseInfo, exerciseId) => {
     try {
         if(exerciseId === undefined){
-
-            throw new Error("Game ID is undefined");
-
+            throw new Error("Exercise ID is undefined");
         }
         const response = await axios.put(`${apiUrl}/exercise/${exerciseId}`, exerciseInfo, {
-            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`}
-            
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`} 
         })
-        console.log("hesadö");
-
         return [ null, response.data ]
     }
     catch (error) {
@@ -69,3 +64,18 @@ export const deleteExercise = async (exerciseId) => {
 
 }
 
+export const addExerciseToSet = async (exerciseInfo, exerciseId) => {
+    try {
+        if(exerciseId === undefined){
+            throw new Error("Exercise ID is undefined");
+        }
+        const response = await axios.put(`${apiUrl}/exercise/${exerciseId}`, exerciseInfo, {
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`} 
+        })
+
+        return [ null, response.data ]
+    }
+    catch (error) {
+        return [ error.message, [] ]
+    }
+}
