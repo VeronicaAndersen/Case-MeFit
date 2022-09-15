@@ -1,11 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { createWorkout } from "../../Api/Workout";
+import WorkoutItem from "./WorkoutItem";
 
-var counter = 0;
 const apiUrl = process.env.REACT_APP_API_URL
+
 const Workouts = () => {
 
     const [apiData, setApiData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { register, handleSubmit } = useForm();
+    const [apiError, setApiError] = useState(null);
 
     useEffect(() => {
         fetch(`${apiUrl}/workout`)
@@ -19,49 +24,61 @@ const Workouts = () => {
             })
             .then((data) => {
                 setApiData(data);
+                setLoading(false);
             })
             .catch((err) => {
                 console.log(err.message);
             });
     }, []);
-    let navigate = useNavigate();
-    async function handleGoToExer(event) {
-        event.preventDefault();
-        navigate("../exercise", { replace: true });
-        // replace: true will replace the current entry in 
-        // the history stack instead of adding a new one.
+
+    const onSubmit = async (workout) => {
+        const [error, userResponse] = await createWorkout(workout)
+
+        if (error !== null) {
+            setApiError(error)
+        }
+        if (userResponse !== null) {
+            window.location.reload();
+        }
     }
-    return (
-        <>
-            <h1>Workouts</h1>
-            <div className="items">
-                {apiData.map((data) => {
-                    if (data.complete === true || data.complete === false) {
-                        counter++;
-                        return (
-                            <div className="item" key={data.id}>
-                                <p>{data.name} </p>
-                                <button key={data.id} onClick={handleAddToProg}>Add</button>
-                            </div>
-                        )
-                    }
-                    if (counter === 0) {
-                        return (
-                            <div className="item">
-                                <p>There is no workouts. Do you want to add some exercises?</p>
-                                <button onClick={handleGoToExer}>Exercise</button>
-                            </div>
-                        )
-                    }
-                })}
 
-
-            </div>
-        </>
-    )
+    if (loading === true) {
+        return null
+    } else {
+        return (
+            <>
+                <h1>Workouts</h1>
+                <div className="items">
+                    <div className='item none'>
+                        <button onClick={handleAddWorkout}>Create new Workout</button>
+                    </div>
+                    <form id='createWorkout' onSubmit={handleSubmit(onSubmit)}>
+                        <h1>Create new Workout</h1>
+                        <span className='close' onClick={handleClose}>X</span>
+                        <input className='input-form' type="text" placeholder='Name' {...register("name")} />
+                        <input className='input-form' type="text" placeholder='Type' {...register("type")} />
+                        <br />
+                        <div className='item none'>
+                            {<button type="submit" value="Submit">Submit</button>}
+                        </div>
+                    </form>
+                    {loading === false && apiData.map((data) => {
+                            return (
+                                <div key={data.id} >
+                                    <WorkoutItem workout={data} />
+                                </div>)
+                        })}
+                </div>
+            </>
+        )
+    }
 }
 export default Workouts;
 
-const handleAddToProg = () => {
-    alert("Added to Program");
+const handleAddWorkout = () => {
+    document.getElementById("createWorkout").style.display = "block";
+}
+
+const handleClose = () => {
+    document.getElementById("createWorkout").style.display = "none";
 }

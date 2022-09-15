@@ -466,7 +466,7 @@ a {
     font-weight: 900;
 }
 
-#createExercise {
+#createExercise, #createWorkout {
     display: none;
     position: absolute;
     background-color: #ececec;

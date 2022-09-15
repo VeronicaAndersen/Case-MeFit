@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { createExercise, updateExercise } from '../../Api/Exercise';
+import { createExercise } from '../../Api/Exercise';
 import ExerciseItem from './ExerciseItem';
 
 const apiUrl = process.env.REACT_APP_API_URL

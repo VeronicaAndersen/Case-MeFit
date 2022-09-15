@@ -23,7 +23,7 @@ export const createWorkout = async (workoutInfo) => {
 }
 
 
-export const updateExercise = async (workoutInfo, workoutId) => {
+export const updateWorkout = async (workoutInfo, workoutId) => {
     try {
         if(workoutId === undefined){
             throw new Error("Workout ID is undefined");
