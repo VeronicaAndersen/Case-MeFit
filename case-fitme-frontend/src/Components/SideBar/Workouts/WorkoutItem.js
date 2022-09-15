@@ -74,7 +74,6 @@ const WorkoutItem = ({ workout, program }) => {
         uppdateProgram(event, workout)
     }
 
-
     if (workout.id != null) {
         return (
             <>
@@ -83,10 +82,8 @@ const WorkoutItem = ({ workout, program }) => {
                         <p>{workout.name}</p>
                         <span>
                             <button className='delete-btn' onClick={handleDelete}>Delete</button>
-
                             <select name="programs" className='select' id="programs" >
                                 {apiData.map((program) => {
-                                    //console.log(program);
                                     return (
                                         <option onSelect={event => handleAddToProgram(event)} value={program.id}>{program.name}</option>
                                     )
@@ -95,17 +92,21 @@ const WorkoutItem = ({ workout, program }) => {
                             <button onClick={handleAddToProgram}>Add</button>
                         </span>
                     </div>
+
+                    {/* Dispalys details for specific exercise. */}
                     <span className='details'>
                         <h3>Details</h3>
                         <p>Name: {workout.name} </p>
                         <p>Type: {workout.type}</p>
                     </span>
                 </div>
+
+                {/* Form that updates workout. */}
                 <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={workout.id}>
                         <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />
-                        <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} />
+                        {/* <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} /> */}{/* Contains null value. */}
                     </div>
                     <button className='save-btn' type="submit" onClick={onUpdate} value={workout.id}>Save</button>
                 </form>

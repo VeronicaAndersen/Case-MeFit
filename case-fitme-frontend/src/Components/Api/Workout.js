@@ -1,9 +1,9 @@
-import { createHeaders } from '.'
 import axios from "axios";
 import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
+//Create a new user (takes in array of workout information)
 export const createWorkout = async (workoutInfo) => {
     try {
         const response = await fetch(`${apiUrl}/workout`, {
@@ -22,7 +22,7 @@ export const createWorkout = async (workoutInfo) => {
     }
 }
 
-
+//Update an existing workout
 export const updateWorkout = async (workoutInfo, workoutId) => {
     try {
         if(workoutId === undefined){
@@ -38,6 +38,7 @@ export const updateWorkout = async (workoutInfo, workoutId) => {
     }
 }
 
+//Delete an existing workout (takes in a workout object)
 export const deleteWorkout = async (workoutId) => {
     try {
         const response = await fetch(`${apiUrl}/workout/${workoutId}`, {

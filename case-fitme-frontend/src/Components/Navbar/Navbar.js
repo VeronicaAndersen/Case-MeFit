@@ -5,6 +5,7 @@ import Sidebar from "../SideBar/Sidebar";
 const Navbar = () => {
     return (
         <>
+        {/* Menu component using keycloak to check if user is authenticated.*/}
             <nav>
                 <Link className="menu-item"
                     id="logo"

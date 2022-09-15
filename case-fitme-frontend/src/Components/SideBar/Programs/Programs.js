@@ -13,6 +13,7 @@ const Programs = () => {
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
 
+    /* Api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/program`, { headers })
@@ -33,6 +34,7 @@ const Programs = () => {
             });
     }, []);
 
+    /* Method for creating. */
     const onSubmit = async (program) => {
         const [error, userResponse] = await createProgram(program)
 
@@ -53,6 +55,7 @@ const Programs = () => {
                     <div className='item none'>
                         <button onClick={handleAddProgram}>Create new Program</button>
                     </div>
+                    {/* Form that creates new program. */}
                     <form id='createProgram' onSubmit={handleSubmit(onSubmit)}>
                         <h1>Create new Program</h1>
                         <span className='close' onClick={handleClose}>X</span>
@@ -76,6 +79,7 @@ const Programs = () => {
 }
 export default Programs;
 
+/* Methods that styles specific id. */
 const handleAddProgram = () => {
     document.getElementById("createProgram").style.display = "block";
 }

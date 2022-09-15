@@ -14,7 +14,7 @@ const Exercises = () => {
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
 
-
+/* Api fetch request with error handling. */
     useEffect(() => {
         const headers = { Authorization: `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/exercise`, {headers})
@@ -35,6 +35,7 @@ const Exercises = () => {
             });
     }, []);
 
+    /* Method for creating. */
     const onSubmit = async (exercise) => {
         const [error, userResponse] = await createExercise(exercise)
 
@@ -57,6 +58,8 @@ const Exercises = () => {
                         <div className='item none'>
                             <button onClick={handleAddExercise}>Create new exercise</button>
                         </div>
+
+                        {/* Form that creates new exercise. */}
                         <form id='createExercise' onSubmit={handleSubmit(onSubmit)}>
                             <h1>Create new Exercise</h1>
                             <span className='close' onClick={handleClose}>X</span>
@@ -85,7 +88,7 @@ const Exercises = () => {
 }
 export default Exercises;
 
-
+/* Methods that styles specific id. */
 const handleAddExercise = () => {
     document.getElementById("createExercise").style.display = "block";
 }

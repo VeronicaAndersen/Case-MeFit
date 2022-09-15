@@ -1,8 +1,8 @@
-import { createHeaders } from '.'
 import axios from "axios";
 import keycloak from '../../Keycloak/keycloak'
 
 const apiUrl = process.env.REACT_APP_API_URL
+
 //Create a new user (takes in array of exercise information)
 export const createExercise = async (exerciseInfo) => {
     try {
@@ -23,7 +23,6 @@ export const createExercise = async (exerciseInfo) => {
     }
 
 }
-
 
 //Update an existing exercise
 export const updateExercise = async (exerciseInfo, exerciseId) => {
@@ -62,20 +61,4 @@ export const deleteExercise = async (exerciseId) => {
         return [ error.message, null ]
     }
 
-}
-
-export const addExerciseToSet = async (exerciseInfo, exerciseId) => {
-    try {
-        if(exerciseId === undefined){
-            throw new Error("Exercise ID is undefined");
-        }
-        const response = await axios.put(`${apiUrl}/exercise/${exerciseId}`, exerciseInfo, {
-            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`} 
-        })
-
-        return [ null, response.data ]
-    }
-    catch (error) {
-        return [ error.message, [] ]
-    }
 }

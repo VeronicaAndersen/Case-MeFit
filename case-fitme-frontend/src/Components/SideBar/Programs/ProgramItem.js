@@ -19,6 +19,7 @@ const ProgramItem = ({ program }) => {
         document.getElementById("details").style.display = "none"
     }
 
+    /* Methods that sets the value from the form. */
     const handleName = (event) => {
         setName(event.target.value);
     }
@@ -27,6 +28,7 @@ const ProgramItem = ({ program }) => {
         setCategory(event.target.value);
     }
 
+    /* Deletes programe with id. */
     const handleDelete = () => {
         deleteProgram(program.id);
         setTimeout(function(){
@@ -45,16 +47,19 @@ const ProgramItem = ({ program }) => {
                         <button onClick={handleAddToWork}>Add</button>
                     </span>
                 </div>
+
+                {/* Dispalys details for specific program. */}
                 <span className='details'>
                         <h3>Details</h3>
                         <p>Name: {program.name} </p>
                         <p>Category: {program.type}</p>
                     </span>
                 </div>
+                {/* Form that updates program. */}
                 <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={program.id}>
-                        <input className='input-form' type="text" name="type" value={category} onChange={event => handleCategory(event)} />
+                        {/* <input className='input-form' type="text" name="type" value={category} onChange={event => handleCategory(event)} /> */}{/* Contains null value. */}
                     </div>
                     <button className='save-btn' type="submit" onClick={onUpdate} value={program.id}>Save</button>
                 </form>

@@ -1,9 +1,9 @@
-import { createHeaders } from '.'
 import axios from "axios";
 import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
+//Create a new user (takes in array of program information)
 export const createProgram = async (programInfo) => {
     try {
         const response = await fetch(`${apiUrl}/program`, {
@@ -22,7 +22,7 @@ export const createProgram = async (programInfo) => {
     }
 }
 
-
+//Update an existing program
 export const updateProgram = async (programInfo, programId) => {
     try {
         if(programId === undefined){
@@ -38,6 +38,7 @@ export const updateProgram = async (programInfo, programId) => {
     }
 }
 
+//Delete an existing program (takes in a program object)
 export const deleteProgram = async (programId) => {
     try {
         const response = await fetch(`${apiUrl}/program/${programId}`, {
@@ -57,7 +58,7 @@ export const deleteProgram = async (programId) => {
         return [ error.message, null ]
     }
 }
-
+//Update an existing program with workoutId
 export const uppdateProgram = async (programId, workout) => {
     try {
         if(programId === undefined){
