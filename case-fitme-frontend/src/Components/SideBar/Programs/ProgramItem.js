@@ -55,12 +55,12 @@ const ProgramItem = ({ program }) => {
                         <p>Category: {program.type}</p>
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
+                <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={program.id}>
                         <input className='input-form' type="text" name="type" value={category} onChange={event => handleCategory(event)} />
                     </div>
-                    <button type="submit" onClick={onUpdate} value={program.id}>Save</button>
+                    <button className='save-btn' type="submit" onClick={onUpdate} value={program.id}>Save</button>
                 </form>
             </>
         )

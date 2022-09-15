@@ -19,7 +19,7 @@ const WorkoutItem = ({ workout, program }) => {
 
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
-        fetch(`${apiUrl}/workout`, { headers })
+        fetch(`${apiUrl}/program`, { headers })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -57,6 +57,7 @@ const WorkoutItem = ({ workout, program }) => {
     const handleType = (event) => {
         setType(event.target.value);
     }
+   
 
     const handleComplete = (event) => {
         setComplete(event.target.value);
@@ -69,8 +70,8 @@ const WorkoutItem = ({ workout, program }) => {
         }, 1000);
     }
 
-    const handleAddToProgram = () => {
-        uppdateProgram(1, workout)
+    const handleAddToProgram = (event) => {
+        uppdateProgram(event, workout)
     }
 
 
@@ -83,11 +84,11 @@ const WorkoutItem = ({ workout, program }) => {
                         <span>
                             <button onClick={handleDelete}>Delete</button>
 
-                            <select name="programs" id="programs">
+                            <select name="programs" id="programs" >
                                 {apiData.map((program) => {
                                     //console.log(program);
                                     return (
-                                        <option value={program.id}>{program.name}</option>
+                                        <option onSelect={event => handleAddToProgram(event)} value={program.id}>{program.name}</option>
                                     )
                                 })}
                             </select>
@@ -100,13 +101,13 @@ const WorkoutItem = ({ workout, program }) => {
                         <p>Type: {workout.type}</p>
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
+                <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={workout.id}>
                         <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />
                         <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} />
                     </div>
-                    <button type="submit" onClick={onUpdate} value={workout.id}>Save</button>
+                    <button className='save-btn' type="submit" onClick={onUpdate} value={workout.id}>Save</button>
                 </form>
             </>
         )

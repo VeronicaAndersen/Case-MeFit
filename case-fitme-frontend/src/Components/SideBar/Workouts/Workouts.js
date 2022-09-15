@@ -50,13 +50,7 @@ const Workouts = () => {
         return (
             <>
                 <h1>Workouts</h1>
-                    <select name="programs" id="programs">
-                        {loading === false && apiData.map((workout) => {
-                            return (
-                                <option value={workout.id}>{workout.name}</option>
-                            )
-                        })}
-                    </select>
+
                 <div className="items">
                     <div className='item none'>
                         <button onClick={handleAddWorkout}>Create new Workout</button>

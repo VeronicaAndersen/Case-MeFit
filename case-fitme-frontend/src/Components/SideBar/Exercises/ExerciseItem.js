@@ -61,13 +61,13 @@ const ExerciseItem = ({ exercise }) => {
                         <p>Target Muscle Group: {exercise.targetMuscleGroup}</p>
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
+                <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
                     <div id={exercise.id}>
                         <input className='input-form' type="text" name="description" value={exercise.description} onChange={event => handleDescription(event)} />
                         <input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
                     </div>
-                    <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
+                    <button className='save-btn' type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
                 </form>
             </>
         )
