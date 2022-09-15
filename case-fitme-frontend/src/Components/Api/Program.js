@@ -4,15 +4,15 @@ import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export const createWorkout = async (workoutInfo) => {
+export const createProgram = async (programInfo) => {
     try {
-        const response = await fetch(`${apiUrl}/workout`, {
+        const response = await fetch(`${apiUrl}/program`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`},
-            body: JSON.stringify(workoutInfo)
+            body: JSON.stringify(programInfo)
         })
         if (!response.ok) {
-            throw new Error('Could not create new workout')
+            throw new Error('Could not create new program')
         }
         const data = await response.json()
         return [ null, data ]
@@ -23,12 +23,12 @@ export const createWorkout = async (workoutInfo) => {
 }
 
 
-export const updateWorkout = async (workoutInfo, workoutId) => {
+export const updateProgram = async (programInfo, programId) => {
     try {
-        if(workoutId === undefined){
-            throw new Error("Workout ID is undefined");
+        if(programId === undefined){
+            throw new Error("Program ID is undefined");
         }
-        const response = await axios.put(`${apiUrl}/workout/${workoutId}`, workoutInfo, {
+        const response = await axios.put(`${apiUrl}/program/${programId}`, programInfo, {
             headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`}
         })
         return [ null, response.data ]
@@ -38,17 +38,17 @@ export const updateWorkout = async (workoutInfo, workoutId) => {
     }
 }
 
-export const deleteWorkout = async (workoutId) => {
+export const deleteProgram = async (programId) => {
     try {
-        const response = await fetch(`${apiUrl}/workout/${workoutId}`, {
+        const response = await fetch(`${apiUrl}/program/${programId}`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`},
             body: JSON.stringify({
-                workouts: []
+                programs: []
             })
         })
         if (!response.ok) {
-            throw new Error('Could not delete the workout')
+            throw new Error('Could not delete the program')
         }
         const result = await response.json()
         return [ null, result ]

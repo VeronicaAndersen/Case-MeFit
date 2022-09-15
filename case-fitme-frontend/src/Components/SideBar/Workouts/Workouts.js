@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import keycloak from '../../../Keycloak/keycloak';
 import { createWorkout } from "../../Api/Workout";
 import WorkoutItem from "./WorkoutItem";
 
@@ -13,7 +14,8 @@ const Workouts = () => {
     const [apiError, setApiError] = useState(null);
 
     useEffect(() => {
-        fetch(`${apiUrl}/workout`)
+        const headers = { 'Authorization': `Bearer ${keycloak.token}` };
+        fetch(`${apiUrl}/workout`, {headers})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(

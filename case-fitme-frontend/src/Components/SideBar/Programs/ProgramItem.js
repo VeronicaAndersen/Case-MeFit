@@ -1,23 +1,21 @@
 import { useForm } from 'react-hook-form';
 import React, { useState } from 'react';
-import { deleteWorkout, updateWorkout } from '../../Api/Workout';
+import { deleteProgram, updateProgram } from '../../Api/Program';
 
 
-const WorkoutItem = ({ workout }) => {
+const ProgramItem = ({ program }) => {
 
     const { handleSubmit} = useForm()
-    const [name, setName] = useState(workout.name);
-    const [complete, setComplete] = useState(workout.complete);
-    const [type, setType] = useState(workout.type);
+    const [name, setName] = useState(program.name);
+    const [category, setCategory] = useState(program.category);
 
     const onUpdate = () => {
-        workout.name = name;
-        const newWorkout = {
+        program.name = name;
+        const newProgram = {
             name: name,
-            type: workout.type,
-            complete: workout.complete
+            category: program.category
         }
-        updateWorkout(workout, workout.id)
+        updateProgram(program, program.id)
         document.getElementById("details").style.display = "none"
     }
 
@@ -25,26 +23,22 @@ const WorkoutItem = ({ workout }) => {
         setName(event.target.value);
     }
 
-    const handleDescription = (event) => {
-        setType(event.target.value);
-    }
-
-    const handleTargetMuscleGroup = (event) => {
-        setComplete(event.target.value);
+    const handleCategory = (event) => {
+        setCategory(event.target.value);
     }
 
     const handleDelete = () => {
-        deleteWorkout(workout.id);
+        deleteProgram(program.id);
         setTimeout(function(){
             window.location.reload();
             }, 1000);
     }
 
-    if (workout.id != null) {
+    if (program.id != null) {
         return (
             <>
-                <div className="item" key={workout.id}>
-                    <p>{workout.name}</p>
+                <div className="item" key={program.id}>
+                    <p>{program.name}</p>
 
                     <div>
                         <input className='input-number' type="number" min="1" placeholder="ex: 8" />
@@ -56,11 +50,10 @@ const WorkoutItem = ({ workout }) => {
                 </div>
                 <form onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
-                    <div id={workout.id}>
-                        <input className='input-form' type="text" name="type" value={type} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleTargetMuscleGroup(event)} />
+                    <div id={program.id}>
+                        <input className='input-form' type="text" name="type" value={category} onChange={event => handleCategory(event)} />
                     </div>
-                    <button type="submit" onClick={onUpdate} value={workout.id}>Save</button>
+                    <button type="submit" onClick={onUpdate} value={program.id}>Save</button>
                 </form>
             </>
         )
@@ -75,8 +68,8 @@ const WorkoutItem = ({ workout }) => {
     }
 }
 
-export default WorkoutItem;
+export default ProgramItem;
 
 const handleAddToWork = () => {
-    alert("Added to workout");
+    alert("Added to program");
 }

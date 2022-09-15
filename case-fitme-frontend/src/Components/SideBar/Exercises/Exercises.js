@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createExercise } from '../../Api/Exercise';
 import ExerciseItem from './ExerciseItem';
+import keycloak from '../../../Keycloak/keycloak';
+import axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -14,7 +16,8 @@ const Exercises = () => {
 
 
     useEffect(() => {
-        fetch(`${apiUrl}/exercise`)
+        const headers = { Authorization: `Bearer ${keycloak.token}` };
+        fetch(`${apiUrl}/exercise`, {headers})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(

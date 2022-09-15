@@ -40,7 +40,7 @@ const Navbar = () => {
 
             </nav>
             <Sidebar />
-                {keycloak.token}
+                <div className="token">{keycloak.token}</div>
 
         </>
     )
