@@ -495,7 +495,8 @@ a:hover{
 
 #createExercise,
 #createWorkout,
-#createProgram {
+#createProgram,
+#createSet {
     display: none;
     position: absolute;
     background-color: var(--bg-content);
@@ -509,7 +510,8 @@ a:hover{
 
 #createExercise .input-form,
 #createWorkout .input-form,
-#createProgram .input-form {
+#createProgram .input-form 
+#createSet .input-form {
     width: 40vw;
     margin: 5px;
 }

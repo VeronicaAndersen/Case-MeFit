@@ -15,6 +15,7 @@ export const createExercise = async (exerciseInfo) => {
         if (!response.ok) {
             throw new Error('Could not create new exercise')
         }
+        console.log(exerciseInfo);
         const data = await response.json()
         return [ null, data ]
     }

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { createExercise } from '../../Api/Exercise';
 import ExerciseItem from './ExerciseItem';
 import keycloak from '../../../Keycloak/keycloak';
-import axios from 'axios';
+import Sets from './Sets';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -17,7 +17,7 @@ const Exercises = () => {
 /* Api fetch request with error handling. */
     useEffect(() => {
         const headers = { Authorization: `Bearer ${keycloak.token}` };
-        fetch(`${apiUrl}/exercise`, {headers})
+        fetch(`${apiUrl}/exercise`, {headers, crossDomain:true })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -43,7 +43,8 @@ const Exercises = () => {
             setApiError(error)
         }
         if (userResponse !== null) {
-            window.location.reload();
+            //console.log(exercise);
+            //window.location.reload();
         }
     }
 
@@ -73,6 +74,8 @@ const Exercises = () => {
                                 {<button type="submit" value="Submit">Submit</button>}
                             </div>
                         </form>
+
+                        <Sets/>
 
                         {loading === false && apiData.map((data) => {
                             return (
