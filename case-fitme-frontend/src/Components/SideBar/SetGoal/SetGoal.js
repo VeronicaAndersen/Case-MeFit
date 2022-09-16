@@ -1,26 +1,44 @@
 import { Form } from 'easy-react-form'
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { createGoal } from '../../Api/Goal';
+import { useForm } from 'react-hook-form';
 
 const SetGoal = () => {
+
+    const [apiError, setApiError] = useState(null);
+    const { register, handleSubmit } = useForm();
+
+
+    const onSubmit = async (goal) => {
+        console.log("I am inside onsubmit")
+
+        const [error, userResponse] = await createGoal(goal)
+
+        if (error !== null) {
+            setApiError(error)
+        }
+        /*if (userResponse !== null) {
+            window.location.reload();
+        }*/
+    }
+
     return (
         <>
-            <h1>Set Goal</h1>
-            <Form onSubmit={values => console.log(values)}>
-                <input className='input-form'
-                    name="goalName"
-                    component="input"
-                    type="tel"
-                    placeholder="Goal Name" />
+                <form id='createGoal' onSubmit={handleSubmit(onSubmit)}>
+                <h1>Set new Goal</h1>
+                <input className='input-form' type="text" placeholder='Name' {...register("goalName")} />
+                <DatePick {...register("date")} />
                 <br />
-                <DatePick />
-            </Form>
-            <GoalBox />
-            <button id='submitbtn'> Save Goal </button>
+                <GoalBox />
+                <br />
+                    {<button type="submit" value="Submit">Submit</button>}
+            </form>
         </>
     )
 }
+
+
 
 function DatePick() {
     const [date, setDate] = useState();
