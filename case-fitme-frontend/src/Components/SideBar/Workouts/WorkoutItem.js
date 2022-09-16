@@ -6,7 +6,7 @@ import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-const WorkoutItem = ({ workout, program }) => {
+const WorkoutItem = ({ workout }) => {
 
 
     const [name, setName] = useState(workout.name);
@@ -16,6 +16,7 @@ const WorkoutItem = ({ workout, program }) => {
     const [loading, setLoading] = useState(true);
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
+    const [selectedProgramId, setSelectedProgramId] = useState(null);
 
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
@@ -30,6 +31,7 @@ const WorkoutItem = ({ workout, program }) => {
             })
             .then((program) => {
                 setApiData(program);
+                setSelectedProgramId(program[0])
                 setLoading(false);
             })
             .catch((err) => {
@@ -57,7 +59,7 @@ const WorkoutItem = ({ workout, program }) => {
     const handleType = (event) => {
         setType(event.target.value);
     }
-   
+
 
     const handleComplete = (event) => {
         setComplete(event.target.value);
@@ -70,8 +72,11 @@ const WorkoutItem = ({ workout, program }) => {
         }, 1000);
     }
 
-    const handleAddToProgram = (event) => {
-        uppdateProgram(event, workout)
+    const handleAddToProgram = () => {
+        uppdateProgram(apiData, selectedProgramId, workout.id);
+    }
+    const handleProgramSelect = (event) => {
+        setSelectedProgramId(event.target.value);
     }
 
     if (workout.id != null) {
@@ -82,10 +87,10 @@ const WorkoutItem = ({ workout, program }) => {
                         <p>{workout.name}</p>
                         <span>
                             <button className='delete-btn' onClick={handleDelete}>Delete</button>
-                            <select name="programs" className='select' id="programs" >
+                            <select name="programs" className='select' id="programs" onChange={event => handleProgramSelect(event)}>
                                 {apiData.map((program) => {
                                     return (
-                                        <option onSelect={event => handleAddToProgram(event)} value={program.id}>{program.name}</option>
+                                        <option value={program.id}>{program.name}</option>
                                     )
                                 })}
                             </select>

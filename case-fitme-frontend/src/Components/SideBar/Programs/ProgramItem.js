@@ -53,6 +53,7 @@ const ProgramItem = ({ program }) => {
                         <h3>Details</h3>
                         <p>Name: {program.name} </p>
                         <p>Category: {program.type}</p>
+                        <p>Workouts: {program.workout}</p> 
                     </span>
                 </div>
                 {/* Form that updates program. */}
