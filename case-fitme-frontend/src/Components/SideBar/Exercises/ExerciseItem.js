@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { deleteExercise, updateExercise } from '../../Api/Exercise';
 
 
@@ -9,6 +9,7 @@ const ExerciseItem = ({ exercise }) => {
     const [name, setName] = useState(exercise.name);
     const [targetMuscleGroup, setTargetMuscleGroup] = useState(exercise.targetMuscleGroup);
     const [description, setDescription] = useState(exercise.description);
+    const [image, setImage] = useState(exercise.image);
 
     const onUpdate = () => {
         exercise.name = name;
@@ -21,6 +22,7 @@ const ExerciseItem = ({ exercise }) => {
         document.getElementById("details").style.display = "none"
     }
 
+    /* Methods that sets the value from the form. */
     const handleName = (event) => {
         setName(event.target.value);
     }
@@ -28,49 +30,55 @@ const ExerciseItem = ({ exercise }) => {
     const handleDescription = (event) => {
         setDescription(event.target.value);
     }
-
+    
     const handleTargetMuscleGroup = (event) => {
         setTargetMuscleGroup(event.target.value);
     }
-
+    
+    const handleImage = (event) => {
+        setImage(event.target.value);
+    }
+    /* Deletes exercise with id. */
     const handleDelete = () => {
         deleteExercise(exercise.id);
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.reload();
-            }, 1000);
+        }, 1000);
     }
 
     if (exercise.id != null) {
         return (
             <>
-                <div className="item" key={exercise.id}>
-                    <p>{exercise.name}</p>
-
-                    <div>
-                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                <div className='details-item'>
+                    <div className="item" key={exercise.id}>
+                        <p>{exercise.name}</p>
+                        <span>
+                            <button className='delete-btn' onClick={handleDelete}>Delete</button>
+                            <button onClick={handleAddToWork}>Add</button>
+                        </span>
                     </div>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
+                    
+                    {/* Dispalys details for specific exercise. */}
+                    <span className='details'>
+                        <h3>Details</h3>
+                        <p>Name: {exercise.name} </p>
+                        <p>Description: {exercise.description}</p>
+                        <p>Target Muscle Group: {exercise.targetMuscleGroup}</p>
+                        <img src={exercise.image} alt="img" />
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
-                    <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
-                    <div id={exercise.id}>
+
+                {/* Form that updates exercise. */}
+                <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
+                    <div>
+                        <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
                         <input className='input-form' type="text" name="description" value={exercise.description} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
+                        {/*<input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />*/} {/* Contains null value. */}
+                        <input className='input-form' type="text" name="name" value={exercise.image} onChange={event => handleImage(event)} />
                     </div>
-                    <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
+                    <button className='save-btn' type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
                 </form>
             </>
-        )
-    }else {
-        return (
-            <div className="weekly-schedule" key="0">
-                <div className="weekly-todo">
-                    <p>No archived yet!</p>
-                </div>
-            </div>
         )
     }
 }

@@ -13,9 +13,10 @@ const Workouts = () => {
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
 
+    /* Api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
-        fetch(`${apiUrl}/workout`, {headers})
+        fetch(`${apiUrl}/workout`, { headers })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -33,6 +34,7 @@ const Workouts = () => {
             });
     }, []);
 
+    /* Method for creating. */
     const onSubmit = async (workout) => {
         const [error, userResponse] = await createWorkout(workout)
 
@@ -50,10 +52,13 @@ const Workouts = () => {
         return (
             <>
                 <h1>Workouts</h1>
+
                 <div className="items">
                     <div className='item none'>
                         <button onClick={handleAddWorkout}>Create new Workout</button>
                     </div>
+
+                    {/* Form that creates new workout. */}
                     <form id='createWorkout' onSubmit={handleSubmit(onSubmit)}>
                         <h1>Create new Workout</h1>
                         <span className='close' onClick={handleClose}>X</span>
@@ -65,11 +70,11 @@ const Workouts = () => {
                         </div>
                     </form>
                     {loading === false && apiData.map((data) => {
-                            return (
-                                <div key={data.id} >
-                                    <WorkoutItem workout={data} />
-                                </div>)
-                        })}
+                        return (
+                            <div key={data.id} >
+                                <WorkoutItem workout={data} />
+                            </div>)
+                    })}
                 </div>
             </>
         )
@@ -77,6 +82,7 @@ const Workouts = () => {
 }
 export default Workouts;
 
+/* Methods that styles specific id. */
 const handleAddWorkout = () => {
     document.getElementById("createWorkout").style.display = "block";
 }

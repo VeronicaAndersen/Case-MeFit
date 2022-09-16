@@ -1,14 +1,41 @@
 import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { deleteWorkout, updateWorkout } from '../../Api/Workout';
+import { uppdateProgram } from '../../Api/Program';
+import keycloak from '../../../Keycloak/keycloak';
+
+const apiUrl = process.env.REACT_APP_API_URL
+
+const WorkoutItem = ({ workout, program }) => {
 
 
-const WorkoutItem = ({ workout }) => {
-
-    const { handleSubmit} = useForm()
     const [name, setName] = useState(workout.name);
     const [complete, setComplete] = useState(workout.complete);
     const [type, setType] = useState(workout.type);
+    const [apiData, setApiData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { register, handleSubmit } = useForm();
+    const [apiError, setApiError] = useState(null);
+
+    useEffect(() => {
+        const headers = { 'Authorization': `Bearer ${keycloak.token}` };
+        fetch(`${apiUrl}/program`, { headers })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                return response.json();
+            })
+            .then((program) => {
+                setApiData(program);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
 
     const onUpdate = () => {
         workout.name = name;
@@ -18,49 +45,70 @@ const WorkoutItem = ({ workout }) => {
             complete: workout.complete
         }
         updateWorkout(workout, workout.id)
-        document.getElementById("details").style.display = "none"
+        setTimeout(function () {
+            window.location.reload();
+        }, 5000);
     }
 
     const handleName = (event) => {
         setName(event.target.value);
     }
 
-    const handleDescription = (event) => {
+    const handleType = (event) => {
         setType(event.target.value);
     }
+   
 
-    const handleTargetMuscleGroup = (event) => {
+    const handleComplete = (event) => {
         setComplete(event.target.value);
     }
 
     const handleDelete = () => {
         deleteWorkout(workout.id);
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.reload();
-            }, 1000);
+        }, 1000);
+    }
+
+    const handleAddToProgram = (event) => {
+        uppdateProgram(event, workout)
     }
 
     if (workout.id != null) {
         return (
             <>
-                <div className="item" key={workout.id}>
-                    <p>{workout.name}</p>
-
-                    <div>
-                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
+                <div className='details-item'>
+                    <div className="item" key={workout.id}>
+                        <p>{workout.name}</p>
+                        <span>
+                            <button className='delete-btn' onClick={handleDelete}>Delete</button>
+                            <select name="programs" className='select' id="programs" >
+                                {apiData.map((program) => {
+                                    return (
+                                        <option onSelect={event => handleAddToProgram(event)} value={program.id}>{program.name}</option>
+                                    )
+                                })}
+                            </select>
+                            <button onClick={handleAddToProgram}>Add</button>
+                        </span>
                     </div>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
+
+                    {/* Dispalys details for specific exercise. */}
+                    <span className='details'>
+                        <h3>Details</h3>
+                        <p>Name: {workout.name} </p>
+                        <p>Type: {workout.type}</p>
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
+
+                {/* Form that updates workout. */}
+                <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
                     <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                     <div id={workout.id}>
-                        <input className='input-form' type="text" name="type" value={type} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleTargetMuscleGroup(event)} />
+                        <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />
+                        {/* <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} /> */}{/* Contains null value. */}
                     </div>
-                    <button type="submit" onClick={onUpdate} value={workout.id}>Save</button>
+                    <button className='save-btn' type="submit" onClick={onUpdate} value={workout.id}>Save</button>
                 </form>
             </>
         )
@@ -77,6 +125,3 @@ const WorkoutItem = ({ workout }) => {
 
 export default WorkoutItem;
 
-const handleAddToWork = () => {
-    alert("Added to workout");
-}
