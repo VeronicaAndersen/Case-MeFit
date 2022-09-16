@@ -9,6 +9,7 @@ const ExerciseItem = ({ exercise }) => {
     const [name, setName] = useState(exercise.name);
     const [targetMuscleGroup, setTargetMuscleGroup] = useState(exercise.targetMuscleGroup);
     const [description, setDescription] = useState(exercise.description);
+    const [image, setImage] = useState(exercise.image);
 
     const onUpdate = () => {
         exercise.name = name;
@@ -29,11 +30,14 @@ const ExerciseItem = ({ exercise }) => {
     const handleDescription = (event) => {
         setDescription(event.target.value);
     }
-
+    
     const handleTargetMuscleGroup = (event) => {
         setTargetMuscleGroup(event.target.value);
     }
-
+    
+    const handleImage = (event) => {
+        setImage(event.target.value);
+    }
     /* Deletes exercise with id. */
     const handleDelete = () => {
         deleteExercise(exercise.id);
@@ -60,6 +64,7 @@ const ExerciseItem = ({ exercise }) => {
                         <p>Name: {exercise.name} </p>
                         <p>Description: {exercise.description}</p>
                         <p>Target Muscle Group: {exercise.targetMuscleGroup}</p>
+                        <img src={exercise.image} alt="img" />
                     </span>
                 </div>
 
@@ -69,6 +74,7 @@ const ExerciseItem = ({ exercise }) => {
                         <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
                         <input className='input-form' type="text" name="description" value={exercise.description} onChange={event => handleDescription(event)} />
                         {/*<input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />*/} {/* Contains null value. */}
+                        <input className='input-form' type="text" name="name" value={exercise.image} onChange={event => handleImage(event)} />
                     </div>
                     <button className='save-btn' type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
                 </form>
