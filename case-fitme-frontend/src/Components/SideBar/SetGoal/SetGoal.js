@@ -3,16 +3,24 @@ import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { createGoal } from '../../Api/Goal';
 import { useForm } from 'react-hook-form';
+import SetGoalsItem from "./SetGoalsItem";
 
 const SetGoal = () => {
 
-    const [apiError, setApiError] = useState(null);
+    const [apiData, setApiData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { register, handleSubmit } = useForm();
+    const [apiError, setApiError] = useState(null);
+    const [date, setDate] = useState(null);
 
-
-    const onSubmit = async (goal) => {
+    const onSubmit = async ({goalName}) => {
         console.log("I am inside onsubmit")
-
+        console.log(goalName);
+        const goal = {
+            goalName: goalName,
+            date: date
+        }
+        console.log(goal);
         const [error, userResponse] = await createGoal(goal)
 
         if (error !== null) {
@@ -25,24 +33,31 @@ const SetGoal = () => {
 
     return (
         <>
-                <form id='createGoal' onSubmit={handleSubmit(onSubmit)}>
+            <form id='createGoal' onSubmit={handleSubmit(onSubmit)}>
                 <h1>Set new Goal</h1>
                 <input className='input-form' type="text" placeholder='Name' {...register("goalName")} />
-                <DatePick {...register("date")} />
+                <DatePick {...register("date")} updateDate={setDate} />
                 <br />
                 <GoalBox />
                 <br />
-                    {<button type="submit" value="Submit">Submit</button>}
+                {<button type="submit" value="Submit">Submit</button>}
             </form>
+            {loading === false && apiData.map((data) => {
+                return (
+                    <div key={data.id} >
+                        <SetGoalsItem goal={data} />
+                    </div>)
+            })}
         </>
     )
 }
 
 
 
-function DatePick() {
+function DatePick({updateDate}) {
     const [date, setDate] = useState();
     console.log("Date", date);
+    updateDate(date);
     return (
         <>
             <input className='inputDate' type="date" onChange={e => setDate(e.target.value)} />

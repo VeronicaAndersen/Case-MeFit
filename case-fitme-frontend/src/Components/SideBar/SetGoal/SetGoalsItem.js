@@ -64,8 +64,5 @@ const SetGoalsItem = ({ goal }) => {
             window.location.reload();
         }, 1000);
     }
-
-
-
-
 }
+export default SetGoalsItem;
