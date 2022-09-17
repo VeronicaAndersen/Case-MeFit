@@ -1,5 +1,6 @@
 import keycloak from "../../Keycloak/keycloak";
 
+/* LoginForm component contains two buttons [Login, Register]. */
 const LoginForm = () => {
     return (
         <>

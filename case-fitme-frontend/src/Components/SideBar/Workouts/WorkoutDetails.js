@@ -1,18 +1,16 @@
-import InsertPrograms from "./InsertPrograms";
-import ProgramItem from "./ProgramItem";
 import React, { useEffect, useState } from 'react';
 import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function Programs({ program }) {
+export default function WorkoutDetails({workout}) {
 
     const [apiData, setApiData] = useState([]);
+    const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
 
-    /* Api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
-        fetch(`${apiUrl}/program`, { headers })
+        fetch(`${apiUrl}/workout`, { headers })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -21,23 +19,22 @@ export default function Programs({ program }) {
                 }
                 return response.json();
             })
-            .then((data) => {
-                setApiData(data);
+            .then((workout) => {
+                setApiData(workout);
+                setSelectedWorkoutId(workout[0])
             })
             .catch((err) => {
                 console.log(err.message);
             });
     }, []);
-    return (
+
+    return(
         <>
-            <h1>Programs</h1>
-            <InsertPrograms />
-            {apiData.map((data) => {
-                return (
-                    <div key={data.id} >
-                        <ProgramItem program={data} />
-                    </div>)
-            })}
+        <div className='card' id='work-detail'>
+                    <h3>Details</h3>
+                        <p>{workout.name}</p>
+                        <p>{workout.type}</p>
+                </div>
         </>
     )
 }

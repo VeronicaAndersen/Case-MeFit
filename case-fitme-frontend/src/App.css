@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lustria&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
 :root {
-    --primary: #B6EDE6;
-    --secondary: #EDB6EB;
+    --primary: #1C5182;
+    --secondary: #BCD3C4;
     --shadow: rgba(110, 112, 114, 0.3) 0px 8px 24px;
+    --bg-content: #ececec;
 }
 
 * {
@@ -11,7 +12,7 @@
 }
 
 body {
-    /* background-image: url("Images/bg.PNG"); */
+    background-image: url("/public/training.jpg");
     background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
@@ -23,14 +24,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Rockwell', serif;
 }
 
 p,
 a,
 button,
 #logout {
-    font-family: 'Lustria', serif;
+    font-family: 'Rockwell', serif;
 }
 
 h1 {
@@ -55,7 +56,7 @@ button {
 .button {
     margin: 20px;
     width: 150px;
-    background-color: transparent;
+    background-color: var(--bg-content);
     font-size: 25px;
     color: #000;
     padding: 15px 0;
@@ -101,7 +102,8 @@ button {
 #submitbtn,
 #contri-btn,
 #fa-btn,
-#save-btn {
+#save-btn,
+.save-btn {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);
@@ -110,13 +112,36 @@ button {
     margin: 5px;
 }
 
+.item button:hover,
+#submitbtn:hover,
+#contri-btn:hover,
+#fa-btn:hover,
+#save-btn:hover,
+.save-btn:hover {
+    background-color: #8eaa98 !important;
+}
+
+.delete-btn {
+    background-color: transparent !important;
+    border: #b45454 solid 2px !important;
+}
+
+.delete-btn:hover {
+    background-color: #b45454 !important;
+}
+
+.add-btn {
+    color: #fff;
+    background-color: var(--primary) !important;
+}
+
 .none {
     background-color: transparent !important;
     box-shadow: none !important;
     justify-content: center !important;
 }
 
-#save-btn {
+.save-btn {
     background-color: var(--primary);
     font-weight: 900;
 }
@@ -183,14 +208,21 @@ nav {
     width: fit-content;
     min-width: 90px;
     text-align: center;
+    color: #fff;
 }
 
-.menu-item:hover {
+.menu-item:hover,
+.side-item:hover {
     background-color: var(--secondary);
+    color: #000;
 }
+
 
 a {
     text-decoration: none;
+    color: #fff;
+}
+a:hover{
     color: #000;
 }
 
@@ -206,22 +238,23 @@ a {
 .dropdown-profile {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: var(--primary);
     min-width: 160px;
     box-shadow: var(--shadow);
     z-index: 1;
     right: 0;
+    color: #fff;
 }
 
 .dropdown-profile div {
-    color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-profile div:hover {
-    background-color: #ddd;
+    background-color: var(--secondary);
+    color: #000;
 }
 
 .dropdown:hover .dropdown-profile {
@@ -235,14 +268,15 @@ a {
     width: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid #333;
+    border-top: 6px solid #fff;
+    color: #fff;
 }
 
 .dropdown-arrow:hover {
     top: 20px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid #333;
+    border-bottom: 6px solid #fff;
     border-top: 6px solid transparent;
 }
 
@@ -265,11 +299,9 @@ a {
     text-align: center;
 }
 
-.side-item:hover {
-    background-color: var(--secondary);
-}
-
 .content {
+    background-color: #ececec8a;
+    border-radius: 10px;
     position: absolute;
     top: 80px;
     left: 250px;
@@ -304,7 +336,7 @@ a {
 .weekly-schedule {
     display: block;
     flex-direction: column;
-    background-color: #ececec;
+    background-color: var(--bg-content);
     width: 40vw;
     height: 50px;
     border-radius: 10px;
@@ -361,7 +393,7 @@ a {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: var(--bg-content);
     width: 60vw;
     box-shadow: var(--shadow);
     z-index: 1;
@@ -380,7 +412,7 @@ a {
 
 .input-form,
 .inputDate {
-    background-color: #ececec;
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 40vw;
     height: 50px;
@@ -400,7 +432,7 @@ a {
 
 .input-number,
 .input-number:focus {
-    background-color: #ececec;
+    background-color: var(--bg-content);
     border-radius: 5px;
     width: 60px;
     margin: 5px;
@@ -418,13 +450,13 @@ a {
 .setgoalbtn {
     margin: 10px 2px;
     cursor: pointer;
-    background-color: #f1f1f1;
+    background-color: var(--bg-content);
     border: none;
     box-shadow: var(--shadow);
 }
 
 .setgoalbox {
-    background-color: #ececec;
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 40vw;
     height: 200px;
@@ -442,7 +474,7 @@ a {
 /*______________ Items __________________*/
 
 .item {
-    background-color: #ececec;
+    background-color: var(--bg-content);
     box-shadow: var(--shadow);
     width: 60vw;
     min-height: fit-content;
@@ -468,10 +500,11 @@ a {
 
 #createExercise,
 #createWorkout,
-#createProgram {
+#createProgram,
+#createSet {
     display: none;
     position: absolute;
-    background-color: #ececec;
+    background-color: var(--bg-content);
     border-radius: 10px;
     box-shadow: var(--shadow);
     top: 0;
@@ -482,18 +515,108 @@ a {
 
 #createExercise .input-form,
 #createWorkout .input-form,
-#createProgram .input-form {
+#createProgram .input-form 
+#createSet .input-form {
     width: 40vw;
     margin: 5px;
 }
 
-#details {
-    display: none;
+.details {
+    background-color: var(--bg-content);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 0 20px;
 }
 
 .token {
-    width: 300px;
+    width: 90vw;
     height: fit-content;
     background-color: #a5001b;
     word-break: break-all;
+}
+
+.details-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+select {
+    /* appearance: none; */
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    width: fit-content;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+}
+
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+
+
+
+
+.container{
+    display: flex;
+    background-color: var(--bg-content);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 50vw;
+    height: 50px;
+    margin: 10px auto;
+    padding: 10px 10px;
+    line-height: 50px;
+    justify-content: space-between;
+}
+
+.container-items{
+    display: flex;
+}
+
+.card{
+    background-color: var(--bg-content);
+    width: 300px;
+    height: fit-content;
+    margin: 10px auto;
+    padding: 20px 0;
+    border-radius: 10px;
+    display: none;
+}
+.card img{
+    width: 200px;
+    margin: 10px;
+}
+figcaption {
+    padding-top: 10px;
+    border-top: solid var(--primary) 2px;
+}
+
+#update-exer,
+#update-work,
+#update-prog
+{
+    display: none;
 }

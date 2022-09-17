@@ -11,8 +11,6 @@ import SetGoal from './View/SetGoal/SetGoal';
 import Dashboard from './View/Dashboard/Dashboard';
 import ArchivedGoal from './View/ArchivedGoal/ArchivedGoal';
 
-
-
 function App() {
   return (
     <BrowserRouter>

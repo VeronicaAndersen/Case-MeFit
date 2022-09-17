@@ -1,82 +1,72 @@
-import { useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
-import { deleteExercise, updateExercise } from '../../Api/Exercise';
+import keycloak from '../../../Keycloak/keycloak';
+import DeleteExercise from './DeleteExercise';
+import UpdateExercises from './UpdateExercise';
+import ExerciseDetails from './ExerciseDetails';
 
+const apiUrl = process.env.REACT_APP_API_URL
 
-const ExerciseItem = ({ exercise }) => {
+export default function ExerciseItem({ exercise }) {
 
-    const { handleSubmit } = useForm()
-    const [name, setName] = useState(exercise.name);
-    const [targetMuscleGroup, setTargetMuscleGroup] = useState(exercise.targetMuscleGroup);
-    const [description, setDescription] = useState(exercise.description);
+    const [apiData, setApiData] = useState([]);
+    const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
 
-    const onUpdate = () => {
-        exercise.name = name;
-        const newExercise = {
-            name: name,
-            description: exercise.description,
-            targetMuscleGroup: exercise.targetMuscleGroup
-        }
-        updateExercise(exercise, exercise.id)
-        document.getElementById("details").style.display = "none"
+    useEffect(() => {
+        const headers = { 'Authorization': `Bearer ${keycloak.token}` };
+        fetch(`${apiUrl}/workout`, { headers })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                return response.json();
+            })
+            .then((workout) => {
+                setApiData(workout);
+                setSelectedWorkoutId(workout[0])
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
+
+    const handleWorkoutSelect = (event) => {
+        setSelectedWorkoutId(event.target.value);
     }
 
-    const handleName = (event) => {
-        setName(event.target.value);
-    }
-
-    const handleDescription = (event) => {
-        setDescription(event.target.value);
-    }
-
-    const handleTargetMuscleGroup = (event) => {
-        setTargetMuscleGroup(event.target.value);
-    }
-
-    const handleDelete = () => {
-        deleteExercise(exercise.id);
-        setTimeout(function(){
-            window.location.reload();
-            }, 1000);
-    }
 
     if (exercise.id != null) {
         return (
             <>
-                <div className="item" key={exercise.id}>
-                    <p>{exercise.name}</p>
-
-                    <div>
-                        <input className='input-number' type="number" min="1" placeholder="ex: 8" />
-                    </div>
-                    <span>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleAddToWork}>Add</button>
+                <div className='container item' key={exercise.id}>
+                    <span className='container-items'>
+                        <h3>{exercise.name}</h3>
+                        <button onClick={showDetails}>Details</button>
+                    </span>
+                    <span className='container-items'>
+                        <DeleteExercise exercise={exercise} />
+                            <button onClick={showEdit}>Edit</button>
+                        <select name="workouts" className='select' id="workouts" onChange={event => handleWorkoutSelect(event)}>
+                            {apiData.map((workout) => {
+                                return (
+                                    <option key={workout.id} value={workout.id}>{workout.name}</option>
+                                )
+                            })}
+                        </select>
+                        <button className='add-btn' >Add</button>
                     </span>
                 </div>
-                <form onSubmit={handleSubmit(onUpdate)}>
-                    <input className='input-form' type="text" name="name" value={exercise.name} onChange={event => handleName(event)} />
-                    <div id={exercise.id}>
-                        <input className='input-form' type="text" name="description" value={exercise.description} onChange={event => handleDescription(event)} />
-                        <input className='input-form' type="text" name="targetMuscleGroup" value={exercise.targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} />
-                    </div>
-                    <button type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
-                </form>
+                <ExerciseDetails exercise={exercise} />
+                <UpdateExercises exercise={exercise}/>
             </>
-        )
-    }else {
-        return (
-            <div className="weekly-schedule" key="0">
-                <div className="weekly-todo">
-                    <p>No archived yet!</p>
-                </div>
-            </div>
         )
     }
 }
 
-export default ExerciseItem;
-
-const handleAddToWork = () => {
-    alert("Added to workout");
+const showDetails = () => {
+    document.getElementById("exer-detail").style.display = "block";
+}
+const showEdit = () => {
+    document.getElementById("update-exer").style.display = "block";
 }
