@@ -5,12 +5,11 @@ import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-const Sets = () => {
+export default function InsertSets () {
 
-    const [apiData, setApiData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [ setApiData] = useState([]);
     const { register, handleSubmit } = useForm();
-    const [apiError, setApiError] = useState(null);
+    const [ setApiError] = useState(null);
 
     /* Api fetch request with error handling. */
     useEffect(() => {
@@ -26,7 +25,6 @@ const Sets = () => {
             })
             .then((data) => {
                 setApiData(data);
-                setLoading(false);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -72,8 +70,6 @@ const Sets = () => {
         </>
     )
 }
-
-export default Sets;
 
 /* Methods that styles specific id. */
 const handleAddSet = () => {

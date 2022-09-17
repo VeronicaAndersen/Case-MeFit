@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { uppdateProgram } from '../../Api/Program';
+import { updateWorkoutInProgram } from '../../Api/Program';
 import keycloak from '../../../Keycloak/keycloak';
 import DeleteWorkout from './DeleteWorkouts';
 import UpdateWorkout from './Updateworkouts';
@@ -34,7 +34,7 @@ const WorkoutItem = ({ workout }) => {
     }, []);
 
     const handleAddToProgram = () => {
-        uppdateProgram(apiData, selectedProgramId, workout.id);
+        updateWorkoutInProgram(apiData, selectedProgramId, workout.id);
     }
     const handleProgramSelect = (event) => {
         setSelectedProgramId(event.target.value);

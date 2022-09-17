@@ -59,7 +59,7 @@ export const deleteProgram = async (programId) => {
     }
 }
 //Update an existing program with workoutId
-export const uppdateProgram = async (programInfo, programId, workout) => {
+export const updateWorkoutInProgram = async (programInfo, programId, workout) => {
     try {
         if(programId === undefined){
             throw new Error("Program id is undefined");

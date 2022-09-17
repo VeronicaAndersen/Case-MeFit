@@ -29,7 +29,6 @@ export default function UpdateProgram({ program }) {
         setCategory(event.target.value);
     }
 
-
     return (
         <>
             {/* Form that updates program. */}

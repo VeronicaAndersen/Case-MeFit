@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import keycloak from '../../../Keycloak/keycloak';
+import InsertWorkouts from './InsertWorkouts';
 import WorkoutItem from "./WorkoutItem";
 
 const apiUrl = process.env.REACT_APP_API_URL
@@ -33,6 +34,7 @@ const Workouts = () => {
     return (
         <>
             <h1>Workouts</h1>
+            <InsertWorkouts />
 
             {loading === false && apiData.map((data) => {
                 return (
