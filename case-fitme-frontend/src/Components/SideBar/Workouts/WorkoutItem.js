@@ -3,10 +3,11 @@ import { updateWorkoutInProgram } from '../../Api/Program';
 import keycloak from '../../../Keycloak/keycloak';
 import DeleteWorkout from './DeleteWorkouts';
 import UpdateWorkout from './Updateworkouts';
+import WorkoutDetails from './WorkoutDetails';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-const WorkoutItem = ({ workout }) => {
+export default function WorkoutItem ({ workout }) {
 
     const [apiData, setApiData] = useState([]);
     const [selectedProgramId, setSelectedProgramId] = useState(null);
@@ -45,10 +46,11 @@ const WorkoutItem = ({ workout }) => {
                     <span className='container-items'>
                         <h3>{workout.name}</h3>
                         <p>{workout.category}</p>
-                        <button>Details</button>
+                        <button onClick={showDetails}>Details</button>
                     </span>
                     <span className='container-items'>
                         <DeleteWorkout workout={workout} />
+                        <button onClick={showEdit}>Edit</button>
                         <select name="programs" className='select' id="programs" onChange={event => handleProgramSelect(event)}>
                             {apiData.map((program) => {
                                 return (
@@ -59,11 +61,16 @@ const WorkoutItem = ({ workout }) => {
                         <button onClick={handleAddToProgram}>Add</button>
                     </span>
                 </div>
+                <WorkoutDetails workout={workout} />
                 <UpdateWorkout workout={workout} />
             </>
         )
     }
 }
 
-export default WorkoutItem;
-
+const showDetails = () => {
+    document.getElementById("work-detail").style.display = "block";
+}
+const showEdit = () => {
+    document.getElementById("update-work").style.display = "block";
+}

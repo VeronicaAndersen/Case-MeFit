@@ -42,7 +42,8 @@ export default function UpdateExercises({ exercise }) {
     return (
         <>
             {/* Form that updates exercise. */}
-            <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
+            <form className='updateForm' id="update-exer" onSubmit={handleSubmit(onUpdate)}>
+                <h3>Edit</h3>
                 <div>
                     <input className='input-form' type="text" name="name" key={exercise.name} value={name} onChange={event => handleName(event)} />
                     <input className='input-form' type="text" name="description" key={exercise.description} value={description} onChange={event => handleDescription(event)} />

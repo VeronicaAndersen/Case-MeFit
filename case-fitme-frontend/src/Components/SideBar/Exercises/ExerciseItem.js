@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import keycloak from '../../../Keycloak/keycloak';
 import DeleteExercise from './DeleteExercise';
 import UpdateExercises from './UpdateExercise';
+import ExerciseDetails from './ExerciseDetails';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -21,9 +22,9 @@ export default function ExerciseItem({ exercise }) {
                 }
                 return response.json();
             })
-            .then((program) => {
-                setApiData(program);
-                setSelectedWorkoutId(program[0])
+            .then((workout) => {
+                setApiData(workout);
+                setSelectedWorkoutId(workout[0])
             })
             .catch((err) => {
                 console.log(err.message);
@@ -41,11 +42,11 @@ export default function ExerciseItem({ exercise }) {
                 <div className='container item' key={exercise.id}>
                     <span className='container-items'>
                         <h3>{exercise.name}</h3>
-                        <p>{exercise.category}</p>
-                        <button>Details</button>
+                        <button onClick={showDetails}>Details</button>
                     </span>
                     <span className='container-items'>
                         <DeleteExercise exercise={exercise} />
+                            <button onClick={showEdit}>Edit</button>
                         <select name="workouts" className='select' id="workouts" onChange={event => handleWorkoutSelect(event)}>
                             {apiData.map((workout) => {
                                 return (
@@ -53,12 +54,19 @@ export default function ExerciseItem({ exercise }) {
                                 )
                             })}
                         </select>
-                        <button >Add</button>
+                        <button className='add-btn' >Add</button>
                     </span>
                 </div>
-                <UpdateExercises exercise={exercise} />
+                <ExerciseDetails exercise={exercise} />
+                <UpdateExercises exercise={exercise}/>
             </>
         )
     }
 }
 
+const showDetails = () => {
+    document.getElementById("exer-detail").style.display = "block";
+}
+const showEdit = () => {
+    document.getElementById("update-exer").style.display = "block";
+}

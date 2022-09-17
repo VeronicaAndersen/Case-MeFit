@@ -37,7 +37,7 @@ export default function UpdateWorkouts({ workout }) {
     return (
         <>
             {/* Form that updates workout. */}
-            <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
+            <form className='updateForm' id='update-work' onSubmit={handleSubmit(onUpdate)}>
                 <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                 <div id={workout.id}>
                     <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />

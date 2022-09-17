@@ -130,6 +130,11 @@ button {
     background-color: #b45454 !important;
 }
 
+.add-btn {
+    color: #fff;
+    background-color: var(--primary) !important;
+}
+
 .none {
     background-color: transparent !important;
     box-shadow: none !important;
@@ -581,7 +586,7 @@ select::-ms-expand {
     box-shadow: var(--shadow);
     width: 50vw;
     height: 50px;
-    margin: auto;
+    margin: 10px auto;
     padding: 10px 10px;
     line-height: 50px;
     justify-content: space-between;
@@ -589,4 +594,29 @@ select::-ms-expand {
 
 .container-items{
     display: flex;
+}
+
+.card{
+    background-color: var(--bg-content);
+    width: 300px;
+    height: fit-content;
+    margin: 10px auto;
+    padding: 20px 0;
+    border-radius: 10px;
+    display: none;
+}
+.card img{
+    width: 200px;
+    margin: 10px;
+}
+figcaption {
+    padding-top: 10px;
+    border-top: solid var(--primary) 2px;
+}
+
+#update-exer,
+#update-work,
+#update-prog
+{
+    display: none;
 }

@@ -1,4 +1,5 @@
 import DeleteProgram from './DeleteProgram';
+import ProgramDetails from './ProgramDetails';
 import UpdateProgram from './UpdateProgram';
 
 export default function ProgramItem ({ program }) {
@@ -8,16 +9,23 @@ export default function ProgramItem ({ program }) {
                 <span className='container-items'>
                     <h3>{program.name}</h3>
                     <p>{program.category}</p>
-                    <button>Details</button>
+                    <button onClick={showDetails}>Details</button>
                 </span>
                 <span className='container-items'>
                     <DeleteProgram program={program}/>
+                    <button onClick={showEdit}>Edit</button>
                     <button>Add</button>
                 </span>
             </div>
-            
+            <ProgramDetails program={program}/>
             <UpdateProgram program={program} />
         </>
     )
 }
 
+const showDetails = () => {
+    document.getElementById("prog-detail").style.display = "block";
+}
+const showEdit = () => {
+    document.getElementById("update-prog").style.display = "block";
+}

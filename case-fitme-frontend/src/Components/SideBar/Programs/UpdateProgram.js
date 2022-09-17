@@ -32,7 +32,7 @@ export default function UpdateProgram({ program }) {
     return (
         <>
             {/* Form that updates program. */}
-            <form className='updateForm' onSubmit={handleSubmit(onUpdate)}>
+            <form className='updateForm' id='update-prog' onSubmit={handleSubmit(onUpdate)}>
                 <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                 <div id={program.id}>
                     <input className='input-form' type="text" name="type" value={category} onChange={event => handleCategory(event)} />{/* Contains null value. */}
