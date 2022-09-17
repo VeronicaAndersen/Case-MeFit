@@ -6,7 +6,7 @@ export default function UpdateWorkouts({ workout }) {
 
     const { handleSubmit } = useForm();
     const [name, setName] = useState(workout.name);
-    const [ complete, setComplete] = useState(workout.complete);
+    const [complete, setComplete] = useState(workout.complete);
     const [type, setType] = useState(workout.type);
 
     const onUpdate = () => {

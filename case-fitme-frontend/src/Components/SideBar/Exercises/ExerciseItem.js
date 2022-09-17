@@ -1,18 +1,13 @@
-import { useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 import keycloak from '../../../Keycloak/keycloak';
-import { deleteExercise, updateExercise } from '../../Api/Exercise';
 import DeleteExercise from './DeleteExercise';
 import UpdateExercises from './UpdateExercise';
-import SelectSet from '../Sets/SelectSet';
-import { updateExerciseInSet } from '../../Api/Set';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 export default function ExerciseItem({ exercise }) {
 
     const [apiData, setApiData] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
 
     useEffect(() => {
@@ -29,7 +24,6 @@ export default function ExerciseItem({ exercise }) {
             .then((program) => {
                 setApiData(program);
                 setSelectedWorkoutId(program[0])
-                setLoading(false);
             })
             .catch((err) => {
                 console.log(err.message);

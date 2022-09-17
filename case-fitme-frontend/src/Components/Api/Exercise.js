@@ -6,7 +6,7 @@ const apiUrl = process.env.REACT_APP_API_URL
 //Create a new user (takes in array of exercise information)
 export const createExercise = async (exerciseInfo) => {
     try {
-        const response = await fetch(`${apiUrl}/exercise`, {
+        const response = await axios.post(`${apiUrl}/exercise`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
             'Authorization': `Bearer ${keycloak.token}`},

@@ -1,12 +1,10 @@
-import { useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
-import { deleteWorkout, updateWorkout } from '../../Api/Workout';
 import { updateExerciseInSet } from '../../Api/Set';
 import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function SelectSet({set}) {
+export default function SelectSet({ set }) {
 
 
     const [exerciseRepetition, setExerciseRepetition] = useState(set.exerciseRepetition);

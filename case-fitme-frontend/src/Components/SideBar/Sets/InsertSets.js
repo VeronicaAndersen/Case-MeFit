@@ -5,11 +5,11 @@ import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function InsertSets () {
+export default function InsertSets() {
 
-    const [ setApiData] = useState([]);
+    const [setApiData] = useState([]);
     const { register, handleSubmit } = useForm();
-    const [ setApiError] = useState(null);
+    const [setApiError] = useState(null);
 
     /* Api fetch request with error handling. */
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function InsertSets () {
     }, []);
 
     /* Method for creating. */
-    const onSubmit = async ({setExerciseRepetition}) => {
+    const onSubmit = async ({ setExerciseRepetition }) => {
         console.log(setExerciseRepetition);
         const set = {
             exerciseRepetition: setExerciseRepetition

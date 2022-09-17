@@ -1,13 +1,11 @@
 import InsertPrograms from "./InsertPrograms";
 import ProgramItem from "./ProgramItem";
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function Programs({program}) {
-  
+export default function Programs({ program }) {
 
     const [apiData, setApiData] = useState([]);
 
@@ -33,13 +31,13 @@ export default function Programs({program}) {
     return (
         <>
             <h1>Programs</h1>
-            <InsertPrograms/>
+            <InsertPrograms />
             {apiData.map((data) => {
-                    return (
-                        <div key={data.id} >
-                            <ProgramItem program={data} />
-                        </div>)
-                })}
+                return (
+                    <div key={data.id} >
+                        <ProgramItem program={data} />
+                    </div>)
+            })}
         </>
     )
 }

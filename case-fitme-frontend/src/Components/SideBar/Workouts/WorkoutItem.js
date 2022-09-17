@@ -9,7 +9,6 @@ const apiUrl = process.env.REACT_APP_API_URL
 const WorkoutItem = ({ workout }) => {
 
     const [apiData, setApiData] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [selectedProgramId, setSelectedProgramId] = useState(null);
 
     useEffect(() => {
@@ -26,7 +25,6 @@ const WorkoutItem = ({ workout }) => {
             .then((program) => {
                 setApiData(program);
                 setSelectedProgramId(program[0])
-                setLoading(false);
             })
             .catch((err) => {
                 console.log(err.message);

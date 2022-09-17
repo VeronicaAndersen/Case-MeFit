@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { createExercise } from '../../Api/Exercise';
 import ExerciseItem from './ExerciseItem';
 import keycloak from '../../../Keycloak/keycloak';
 import Sets from '../Sets/InsertSets';
@@ -8,12 +6,10 @@ import InsertExercises from './InsertExercise';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function Exercises () {
+export default function Exercises() {
 
     const [apiData, setApiData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { register, handleSubmit } = useForm();
-    const [apiError, setApiError] = useState(null);
 
     /* Api fetch request with error handling. */
     useEffect(() => {
@@ -36,37 +32,20 @@ export default function Exercises () {
             });
     }, []);
 
-    /* Method for creating. */
-    const onSubmit = async (exercise) => {
-        const [error, userResponse] = await createExercise(exercise)
+    return (
+        <>
+            <div className="content">
+                <h1>Exercises</h1>
+                <InsertExercises />
+                <Sets />
 
-        if (error !== null) {
-            setApiError(error)
-        }
-        if (userResponse !== null) {
-            //console.log(exercise);
-            //window.location.reload();
-        }
-    }
-
-    if (loading === true) {
-        return null
-    } else {
-        return (
-            <>
-                <div className="content">
-                    <h1>Exercises</h1>
-                    <InsertExercises />
-                    <Sets />
-
-                    {loading === false && apiData.map((data) => {
-                        return (
-                            <div key={data.id} >
-                                <ExerciseItem exercise={data} />
-                            </div>)
-                    })}
-                </div>
-            </>
-        )
-    }
+                {loading === false && apiData.map((data) => {
+                    return (
+                        <div key={data.id} >
+                            <ExerciseItem exercise={data} />
+                        </div>)
+                })}
+            </div>
+        </>
+    )
 }
