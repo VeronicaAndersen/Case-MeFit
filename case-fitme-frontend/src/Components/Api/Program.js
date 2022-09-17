@@ -69,7 +69,7 @@ export const updateWorkoutInProgram = async (programInfo, programId, workout) =>
         }
         let updatedProgram = null;
         for (let i = 0; i < programInfo.length; i++) {
-            if(programInfo[i].id == programId){
+            if(programInfo[i].id === programId){
                 updatedProgram = programInfo[i];
                 break;
             }
