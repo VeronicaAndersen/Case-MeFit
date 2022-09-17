@@ -63,3 +63,34 @@ export const deleteExercise = async (exerciseId) => {
     }
 
 }
+
+//Update an existing program with workoutId
+export const updateExerciseSet = async (programInfo, programId, workout) => {
+    try {
+        if(programId === undefined){
+            throw new Error("Program id is undefined");
+        }
+        if(workout === undefined){
+            throw new Error("Workout body is undefined");
+        }
+        let updatedProgram = null;
+        for (let i = 0; i < programInfo.length; i++) {
+            if(programInfo[i].id == programId){
+                updatedProgram = programInfo[i];
+                break;
+            }
+        }
+        updatedProgram.workouts = [workout]
+        console.log(updatedProgram);
+        const response = await fetch(`${apiUrl}/program/${programId}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`},
+            body: JSON.stringify(updatedProgram)
+        })
+        return [null, response.data]
+    }
+    catch(error){
+        return [error.message, []]
+    }
+
+}

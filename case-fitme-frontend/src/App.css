@@ -569,3 +569,24 @@ select::-ms-expand {
     background-color: var(--select-arrow);
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
+
+
+
+
+
+.container{
+    display: flex;
+    background-color: var(--bg-content);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 50vw;
+    height: 50px;
+    margin: auto;
+    padding: 10px 10px;
+    line-height: 50px;
+    justify-content: space-between;
+}
+
+.container-items{
+    display: flex;
+}
