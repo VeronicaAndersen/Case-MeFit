@@ -364,7 +364,7 @@ a:hover{
 }
 
 #item-complete {
-    border-color: var(--primary);
+    border-color: var(--secondary);
 }
 
 /*______________ Dropdown __________________*/
