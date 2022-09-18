@@ -14,7 +14,7 @@ const Goal = () => {
 
                     <div id='today-list'>
                         <TodaysLists />
-                    <GoalDropdown />
+                        <GoalDropdown />
                     </div>
 
                     <div className="weekly-schedule" id='week-list'>

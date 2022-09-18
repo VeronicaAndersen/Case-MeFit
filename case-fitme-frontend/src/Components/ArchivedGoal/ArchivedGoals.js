@@ -28,7 +28,7 @@ const ArchivedGoals = () => {
 
             {apiData.map((data) => {
                 return (
-                    <div key={data.id} className="weekly-schedule">
+                    <div key={data.id} className="weekly-schedule archived-goal">
                         <div className="weekly-todo">
                             <p className="workout">{data.name}</p>
                             {<div>

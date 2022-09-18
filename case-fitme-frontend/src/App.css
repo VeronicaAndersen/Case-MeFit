@@ -110,6 +110,7 @@ button {
     border: none;
     border-radius: 10px;
     margin: 5px;
+    max-height: 30px;
 }
 
 .item button:hover,
@@ -306,6 +307,7 @@ a:hover{
     top: 80px;
     left: 250px;
     text-align: center;
+    padding: 0 20px 10px 20px;
 }
 
 /*______________ Todays list __________________*/
@@ -342,6 +344,9 @@ a:hover{
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
+.archived-goal{
+    margin: auto auto;
+}
 
 .weekly-todo {
     margin: 10px;
@@ -372,7 +377,7 @@ a:hover{
 .dropdown-bar {
     position: relative;
     background: var(--secondary);
-    width: 60vw;
+    width: 40vw;
     height: 50px;
     margin: 10px auto;
     line-height: 50px;
@@ -394,7 +399,7 @@ a:hover{
     display: none;
     position: absolute;
     background-color: var(--bg-content);
-    width: 60vw;
+    width: 40vw;
     box-shadow: var(--shadow);
     z-index: 1;
     right: 0;
@@ -551,6 +556,7 @@ select {
     cursor: inherit;
     line-height: inherit;
     outline: none;
+    max-height: 40px;
 }
 
 select::-ms-expand {
@@ -584,16 +590,19 @@ select::-ms-expand {
     background-color: var(--bg-content);
     border-radius: 10px;
     box-shadow: var(--shadow);
-    width: 50vw;
-    height: 50px;
+    width: inherit;
+    min-height: 50px;
     margin: 10px auto;
     padding: 10px 10px;
     line-height: 50px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .container-items{
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .card{
