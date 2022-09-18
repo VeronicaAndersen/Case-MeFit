@@ -2,6 +2,7 @@ import keycloak from "../../Keycloak/keycloak";
 import TodaysLists from "./TodayLists/TodaysLists";
 import GoalDropdown from "./GoalDropdown/GoalDropdown";
 import WeeklyLists from "./Weekly/List/WeeklyLists";
+import Calendar from "./Calendar";
 
 const Goal = () => {
     return (
@@ -9,13 +10,14 @@ const Goal = () => {
             {keycloak.authenticated && (
                 <div>
                     <h1>Goals</h1>
-                    <button className="setgoalbtn" id="setToday" onClick={checkActive}>Today</button>
-                    <button className="setgoalbtn" id="setWeekly" onClick={checkActive}>Weekly</button>
+                    <Calendar/>
+                    {/* <button className="setgoalbtn" id="setToday" onClick={checkActive}>Today</button>
+                    <button className="setgoalbtn" id="setWeekly" onClick={checkActive}>Weekly</button> */}
 
-                    <div id='today-list'>
+                    {/* <div id='today-list'>
                         <TodaysLists />
                         <GoalDropdown />
-                    </div>
+                    </div> */}
 
                     <div className="weekly-schedule" id='week-list'>
                         <WeeklyLists />
