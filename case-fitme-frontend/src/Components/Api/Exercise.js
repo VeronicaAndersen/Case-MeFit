@@ -3,7 +3,7 @@ import keycloak from '../../Keycloak/keycloak'
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-//Create a new user (takes in array of exercise information)
+//Create a new exercise (takes in array of exercise information)
 export const createExercise = async (exerciseInfo) => {
     try {
         const response = await axios.post(`${apiUrl}/exercise`, {
