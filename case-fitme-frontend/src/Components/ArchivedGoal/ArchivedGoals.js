@@ -32,6 +32,7 @@ const ArchivedGoals = () => {
                 if (data.complete === true) {
                     return (
                         <div key={data.id} className="weekly-schedule">
+                            <h1>Archived goals</h1>
                             <div className="weekly-todo">
                                 <p className="workout">{data.goalName}</p>
                                 {<div>

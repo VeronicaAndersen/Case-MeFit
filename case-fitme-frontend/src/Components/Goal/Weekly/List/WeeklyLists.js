@@ -30,7 +30,7 @@ const WeeklyLists = () => {
     return (
         <>
             {apiData.map(data => {
-                if (data.complete === true) {
+                if (data.achieved === true) {
                     return (
                         <div key={data.id} className="weekly-schedule">
                             <div className="weekly-todo">
