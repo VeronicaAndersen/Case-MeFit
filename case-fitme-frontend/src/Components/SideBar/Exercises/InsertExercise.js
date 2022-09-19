@@ -7,7 +7,7 @@ export default function InsertExercises() {
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
 
-    /* Method for creating. */
+    /* Method for creating new exercise. */
     const onSubmit = async (exercise) => {
         const [error, userResponse] = await createExercise(exercise)
 
@@ -18,7 +18,7 @@ export default function InsertExercises() {
             window.location.reload();
         }
     }
-
+/* Prints out a form with input fields for exercises. */
     return (
         <>
             <div className="items">

@@ -51,6 +51,7 @@ export default function WorkoutItem ({ workout }) {
                     <span className='container-items'>
                         <DeleteWorkout workout={workout} />
                         <button onClick={showEdit}>Edit</button>
+                        <label>Program: </label>
                         <select name="programs" className='select' id="programs" onChange={event => handleProgramSelect(event)}>
                             {apiData.map((program) => {
                                 return (

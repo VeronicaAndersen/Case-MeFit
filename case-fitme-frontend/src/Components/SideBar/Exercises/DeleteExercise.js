@@ -2,7 +2,7 @@ import { deleteExercise } from '../../Api/Exercise';
 
 export default function DeleteExercise({ exercise }) {
 
-    /* Deletes exercisee with id. */
+    /* Deletes exercise with id. */
     const handleDelete = () => {
         deleteExercise(exercise.id);
         setTimeout(function () {

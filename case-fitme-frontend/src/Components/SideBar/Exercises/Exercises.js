@@ -11,7 +11,7 @@ export default function Exercises() {
     const [apiData, setApiData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    /* Api fetch request with error handling. */
+    /* Exercise api fetch request with error handling. */
     useEffect(() => {
         const headers = { Authorization: `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/exercise`, { headers, crossDomain: true })

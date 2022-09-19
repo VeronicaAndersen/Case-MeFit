@@ -14,6 +14,7 @@ export default function ExerciseItem({ exercise }) {
     const [apiWorkoutData, setApiWorkoutData] = useState([]);
     const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
 
+    /* Set api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/set`, { headers })
@@ -41,7 +42,7 @@ export default function ExerciseItem({ exercise }) {
         setSelectedSetId(event.target.value);
     }
 
-
+    /* Workout api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/workout`, { headers })
@@ -68,7 +69,7 @@ export default function ExerciseItem({ exercise }) {
     const handleAddToWorkout = () => {
 
     }
-
+    /* Prints out Exercises with selections boxes for set & workout.*/
     if (exercise.id != null) {
         return (
             <>
@@ -80,6 +81,7 @@ export default function ExerciseItem({ exercise }) {
                     <span className='container-items'>
                         <DeleteExercise exercise={exercise} />
                         <button onClick={showEdit}>Edit</button>
+                        <label>Set: </label>
                         <select name="sets" className='select' id="sets" onChange={event => handleSetSelect(event)}>
                             {apiSetData.map((set) => {
                                 return (
@@ -87,7 +89,9 @@ export default function ExerciseItem({ exercise }) {
                                 )
                             })}
                         </select>
+
                         <button onClick={handleAddToSet}>Add</button>
+                        <label>Workout: </label>
                         <select name="workouts" className='select' id="workouts" onChange={event => handleWorkoutSelect(event)}>
                             {apiWorkoutData.map((workout) => {
                                 return (

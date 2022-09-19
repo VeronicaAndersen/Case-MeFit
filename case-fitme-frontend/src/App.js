@@ -10,6 +10,7 @@ import Program from './View/Program/Program';
 import SetGoal from './View/SetGoal/SetGoal';
 import Dashboard from './View/Dashboard/Dashboard';
 import ArchivedGoal from './View/ArchivedGoal/ArchivedGoal';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/archivedgoals' element={<ArchivedGoal />} />
         </Routes>
         <Login/>
+        <Footer/>
     </div>
     </BrowserRouter>
     

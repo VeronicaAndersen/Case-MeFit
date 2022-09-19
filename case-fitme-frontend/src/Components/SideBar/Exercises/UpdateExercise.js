@@ -10,6 +10,7 @@ export default function UpdateExercises({ exercise }) {
     const [description, setDescription] = useState(exercise.description);
     const [image, setImage] = useState(exercise.image);
 
+    /* Method that updates exercises. */
     const onUpdate = () => {
         exercise.name = name;
         const newExercise = {

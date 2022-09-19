@@ -195,6 +195,8 @@ button {
 /*______________ Menu __________________*/
 
 nav {
+    position: sticky;
+    z-index: 1000;
     width: 100%;
     top: 0;
     background-color: var(--primary);
@@ -223,7 +225,8 @@ a {
     text-decoration: none;
     color: #fff;
 }
-a:hover{
+
+a:hover {
     color: #000;
 }
 
@@ -344,7 +347,8 @@ a:hover{
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
-.archived-goal{
+
+.archived-goal {
     margin: auto auto;
 }
 
@@ -520,7 +524,7 @@ a:hover{
 
 #createExercise .input-form,
 #createWorkout .input-form,
-#createProgram .input-form 
+#createProgram .input-form,    
 #createSet .input-form {
     width: 40vw;
     margin: 5px;
@@ -581,11 +585,9 @@ select::-ms-expand {
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
 
+/*__________________ Item container ________________________*/
 
-
-
-
-.container{
+.container {
     display: flex;
     background-color: var(--bg-content);
     border-radius: 10px;
@@ -599,13 +601,15 @@ select::-ms-expand {
     align-items: center;
 }
 
-.container-items{
+.container-items {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.card{
+/*__________________ Card details ________________________*/
+
+.card {
     background-color: var(--bg-content);
     width: 300px;
     height: fit-content;
@@ -614,10 +618,12 @@ select::-ms-expand {
     border-radius: 10px;
     display: none;
 }
-.card img{
+
+.card img {
     width: 200px;
     margin: 10px;
 }
+
 figcaption {
     padding-top: 10px;
     border-top: solid var(--primary) 2px;
@@ -625,20 +631,38 @@ figcaption {
 
 #update-exer,
 #update-work,
-#update-prog
-{
+#update-prog {
     display: none;
 }
 
-.calendar{
+/*__________________ Calendar ________________________*/
+
+.calendar {
     max-width: 800px;
 }
 
-.e-schedule .e-month-view .e-current-date .e-date-header, .e-schedule .e-month-agenda-view .e-current-date .e-date-header{
+.e-schedule .e-month-view .e-current-date .e-date-header,
+.e-schedule .e-month-agenda-view .e-current-date .e-date-header {
     background-color: var(--primary);
 }
 
-.e-schedule .e-vertical-view .e-header-cells.e-current-day, .e-schedule .e-month-view .e-date-header-wrap table td.e-current-day, .e-schedule .e-month-agenda-view .e-date-header-wrap table td.e-current-day, .e-schedule .e-schedule-toolbar .e-active-view .e-tbar-btn-text, .e-schedule .e-schedule-toolbar .e-active-view .e-icons {
+.e-schedule .e-vertical-view .e-header-cells.e-current-day,
+.e-schedule .e-month-view .e-date-header-wrap table td.e-current-day,
+.e-schedule .e-month-agenda-view .e-date-header-wrap table td.e-current-day,
+.e-schedule .e-schedule-toolbar .e-active-view .e-tbar-btn-text,
+.e-schedule .e-schedule-toolbar .e-active-view .e-icons {
     color: var(--primary);
     font-weight: 900;
+}
+
+/*__________________ Footer ________________________*/
+.footer {
+    background-color: var(--primary);
+    color: #fff;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }
