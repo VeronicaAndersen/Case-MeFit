@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import keycloak from '../../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -7,7 +8,9 @@ const WeeklyLists = () => {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        fetch(`${apiUrl}/workout`)
+        fetch(`${apiUrl}/workout`,{
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}` },
+        })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
