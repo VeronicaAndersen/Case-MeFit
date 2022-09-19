@@ -71,28 +71,31 @@ export const deleteExercise = async (exerciseId) => {
 }
 
 //Update an existing program with workoutId
-export const updateExerciseSet = async (exerciseInfo, exerciseId, set) => {
+export const updateExerciseSet = async (setInfo, selectedSetId, exerciseId) => {
     try {
         if (exerciseId === undefined) {
             throw new Error("Exercise id is undefined");
         }
-        if (set === undefined) {
+        if (selectedSetId === undefined) {
             throw new Error("Set body is undefined");
         }
-
-        let updatedExercise = null;
-        for (let i = 0; i < exerciseInfo.length; i++) {
-            if (exerciseInfo[i].id === exerciseId) {
-                updatedExercise = exerciseInfo[i];
+        let updatedSet = null;
+        console.log(setInfo);
+        console.log(selectedSetId);
+        for (let i = 0; i < setInfo.length; i++) {
+            if (setInfo[i].id === selectedSetId) {
+                updatedSet = setInfo[i];
                 break;
             }
         }
-        updatedExercise.sets = [set]
-        console.log(updatedExercise);
-        const response = await fetch(`${apiUrl}/exercise/${exerciseId}`, {
+        updatedSet.exercise = exerciseId
+        console.log(updatedSet);
+        
+
+        const response = await fetch(`${apiUrl}/set/${selectedSetId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}` },
-            body: JSON.stringify(updatedExercise)
+            body: JSON.stringify(updatedSet)
         })
         return [null, response.data]
     }

@@ -12,10 +12,11 @@
 }
 
 body {
-    background-image: url("/public/training.jpg");
+    background-image: url("/public/bg (1).jpg");
     background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
+    background-color: #492c24;
 }
 
 h1,
