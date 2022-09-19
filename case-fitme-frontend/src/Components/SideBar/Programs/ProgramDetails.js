@@ -34,7 +34,7 @@ export default function ProgramDetails({ program }) {
             {/* Prints out details about Programs.*/}
             <div className='card' id='prog-detail'>
                 <h3>Details</h3>
-                <p>{program.name}</p>
+                <h4>{program.name}</h4>
                 <p>{program.category}</p>
             </div>
         </>

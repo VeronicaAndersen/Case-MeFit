@@ -61,7 +61,7 @@ export default function WorkoutItem({ workout }) {
                                 )
                             })}
                         </select>
-                        <button onClick={handleAddToProgram}>Add</button>
+                        <button onClick={handleAddToProgram} className='add-btn'>Add</button>
                     </span>
                 </div>
                 <WorkoutDetails workout={workout} />

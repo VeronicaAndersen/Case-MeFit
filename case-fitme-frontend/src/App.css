@@ -359,7 +359,7 @@ a:hover {
 }
 
 .weekly-todo p {
-    margin: 0;
+    margin: 5px 0 0 0;
     text-align: start;
 }
 
@@ -668,4 +668,8 @@ figcaption {
     height: 40px;
     line-height: 40px;
     text-align: center;
+}
+
+.video-link{
+    color: var(--primary);
 }

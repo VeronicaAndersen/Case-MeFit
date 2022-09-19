@@ -36,8 +36,10 @@ export default function ProgramDetails({ exercise }) {
                 <h3>Details</h3>
                 <img src={exercise.image} alt="training-pic" />
                 <figcaption>
-                    <p>{exercise.name}</p>
-                    <p>{exercise.category}</p>
+                    <h4>{exercise.name}</h4>
+                    <p>{exercise.description}</p>
+                    <p><em>{exercise.targetMuscleGroup}</em></p><br/>
+                    <a href={exercise.videoLink} className="video-link">Link to video</a>
                 </figcaption>
             </div>
         </>
