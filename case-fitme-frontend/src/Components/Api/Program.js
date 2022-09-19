@@ -3,7 +3,7 @@ import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-//Create a new user (takes in array of program information)
+//Create a new program (takes in array of program information)
 export const createProgram = async (programInfo) => {
     try {
         const response = await fetch(`${apiUrl}/program`, {

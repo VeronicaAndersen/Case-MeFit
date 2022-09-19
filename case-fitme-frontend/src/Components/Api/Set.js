@@ -3,7 +3,7 @@ import keycloak from '../../Keycloak/keycloak'
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-//Create a new user (takes in array of set information)
+//Create a new set (takes in array of set information)
 export const createSet = async (setInfo) => {
     try {
         const response = await fetch(`${apiUrl}/set`, {
@@ -64,7 +64,7 @@ export const deleteSet = async (setId) => {
 
 }
 
-//Update an existing program with workoutId
+//Update an existing exercise with setId
 export const updateExerciseInSet = async (programInfo, programId, workout) => {
     try {
         if(programId === undefined){

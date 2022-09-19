@@ -3,6 +3,7 @@ import ProgramDetails from './ProgramDetails';
 import UpdateProgram from './UpdateProgram';
 
 export default function ProgramItem ({ program }) {
+    /* Prints out Programs.*/
     return (
         <>
             <div className='container item' key={program.id}>

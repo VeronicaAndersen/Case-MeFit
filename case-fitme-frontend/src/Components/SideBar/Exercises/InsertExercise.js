@@ -18,7 +18,7 @@ export default function InsertExercises() {
             window.location.reload();
         }
     }
-/* Prints out a form with input fields for exercises. */
+    /* Prints out a form with input fields for exercises. */
     return (
         <>
             <div className="items">

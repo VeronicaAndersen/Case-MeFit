@@ -7,11 +7,12 @@ import WorkoutDetails from './WorkoutDetails';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-export default function WorkoutItem ({ workout }) {
+export default function WorkoutItem({ workout }) {
 
     const [apiData, setApiData] = useState([]);
     const [selectedProgramId, setSelectedProgramId] = useState(null);
 
+    /* Program api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/program`, { headers })
@@ -38,7 +39,7 @@ export default function WorkoutItem ({ workout }) {
     const handleProgramSelect = (event) => {
         setSelectedProgramId(event.target.value);
     }
-
+    /* Prints out Workouts with selection box for programs.*/
     if (workout.id != null) {
         return (
             <>

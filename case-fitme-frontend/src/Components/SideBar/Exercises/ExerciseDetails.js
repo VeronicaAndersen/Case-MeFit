@@ -7,6 +7,7 @@ export default function ProgramDetails({ exercise }) {
 
     const [apiData, setApiData] = useState([]);
     const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
+    
     /* Exercise api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };

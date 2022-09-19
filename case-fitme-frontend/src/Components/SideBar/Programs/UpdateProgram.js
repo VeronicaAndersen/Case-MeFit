@@ -8,6 +8,8 @@ export default function UpdateProgram({ program }) {
     const [name, setName] = useState(program.name);
     const [category, setCategory] = useState(program.category);
 
+    /* Method that updates programs. */
+
     const onUpdate = () => {
         program.name = name;
         const newProgram = {

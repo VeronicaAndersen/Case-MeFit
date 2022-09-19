@@ -8,6 +8,7 @@ export default function WorkoutDetails({workout}) {
     const [apiData, setApiData] = useState([]);
     const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
 
+    /* Workout api fetch request with error handling. */
     useEffect(() => {
         const headers = { 'Authorization': `Bearer ${keycloak.token}` };
         fetch(`${apiUrl}/workout`, { headers })
@@ -30,6 +31,7 @@ export default function WorkoutDetails({workout}) {
 
     return(
         <>
+        {/* Prints out details about wprokuts.*/}
         <div className='card' id='work-detail'>
                     <h3>Details</h3>
                         <p>{workout.name}</p>

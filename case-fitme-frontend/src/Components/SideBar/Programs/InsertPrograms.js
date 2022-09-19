@@ -7,7 +7,7 @@ export default function InsertPrograms() {
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
     
-    /* Method for creating. */
+    /* Method for creating new program. */
     const onSubmit = async (program) => {
         const [error, userResponse] = await createProgram(program)
 
@@ -18,7 +18,7 @@ export default function InsertPrograms() {
             window.location.reload();
         }
     }
-
+/* Prints out a form with input fields for program. */
     return (
         <>
             <div className="items">

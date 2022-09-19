@@ -23,6 +23,7 @@ export default function UpdateExercises({ exercise }) {
             window.location.reload();
         }, 1000);
     }
+    
     /* Methods that sets the value from the form. */
     const handleName = (event) => {
         setName(event.target.value);

@@ -6,8 +6,8 @@ export default function InsertWorkouts() {
 
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
-    
-    /* Method for creating. */
+
+    /* Method for creating new workouts. */
     const onSubmit = async (workout) => {
         const [error, userResponse] = await createWorkout(workout)
 
@@ -18,7 +18,7 @@ export default function InsertWorkouts() {
             window.location.reload();
         }
     }
-
+    /* Prints out a form with input fields for workouts. */
     return (
         <>
             <div className="items">
@@ -30,7 +30,7 @@ export default function InsertWorkouts() {
                     <h1>Create new Workout</h1>
                     <span className='close' onClick={handleClose}>X</span>
                     <input className='input-form' type="text" placeholder='Name' {...register("name")} />
-                        <input className='input-form' type="text" placeholder='Type' {...register("type")} />
+                    <input className='input-form' type="text" placeholder='Type' {...register("type")} />
                     <br />
                     <div className='item none'>
                         {<button category="submit" value="Submit">Submit</button>}

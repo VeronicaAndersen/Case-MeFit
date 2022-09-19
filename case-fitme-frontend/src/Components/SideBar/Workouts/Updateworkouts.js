@@ -9,6 +9,7 @@ export default function UpdateWorkouts({ workout }) {
     const [complete, setComplete] = useState(workout.complete);
     const [type, setType] = useState(workout.type);
 
+    /* Method that updates workouts. */
     const onUpdate = () => {
         workout.name = name;
         const newWorkout = {
@@ -21,6 +22,8 @@ export default function UpdateWorkouts({ workout }) {
             window.location.reload();
         }, 1000);
     }
+    
+    /* Methods that sets the value from the form. */
     const handleName = (event) => {
         setName(event.target.value);
     }
