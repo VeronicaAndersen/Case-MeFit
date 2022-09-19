@@ -38,10 +38,10 @@ const SetGoal = () => {
                 <input className='input-form' type="text" placeholder='Name' {...register("goalName")} />
                 <DatePick {...register("date")} updateDate={setDate} />
                 <br />
-                <GoalBox />
                 <br />
                 {<button type="submit" value="Submit">Submit</button>}
             </form>
+                <GoalBox />
             {loading === false && apiData.map((data) => {
                 return (
                     <div key={data.id} >

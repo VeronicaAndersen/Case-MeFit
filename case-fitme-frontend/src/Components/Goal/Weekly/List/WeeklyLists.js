@@ -8,7 +8,7 @@ const WeeklyLists = () => {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        fetch(`${apiUrl}/workout`,{
+        fetch(`${apiUrl}/goal`,{
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}` },
         })
             .then((response) => {
@@ -30,13 +30,13 @@ const WeeklyLists = () => {
     return (
         <>
             {apiData.map(data => {
-                if (data.complete === true) {
+                if (data.achieved === true) {
                     return (
                         <div key={data.id} className="weekly-schedule">
                             <div className="weekly-todo">
-                                <p className="workout">{data.name}</p>
+                                <p className="workout">{data.goalName}</p>
                                 {<div>
-                                    <p className="type">{data.type}</p>
+                                    <p className="type">{data.date}</p>
 
                                 </div>}
                                 <div className="circle" id='item-complete'></div>
@@ -46,9 +46,9 @@ const WeeklyLists = () => {
                     return (
                         <div key={data.id} className="weekly-schedule">
                             <div className="weekly-todo">
-                                <p className="workout">{data.name}</p>
+                                <p className="workout">{data.goalName}</p>
                                 {<div>
-                                    <p className="type">{data.type}</p>
+                                    <p className="type">{data.date}</p>
 
                                 </div>}
                                 <div className="circle"></div>

@@ -9,7 +9,7 @@ const Goal = () => {
         <>
             {keycloak.authenticated && (
                 <div>
-                    <h1>Goals</h1>
+                    <h1>Active goals</h1>
                     <Calendar/>
                     {/* <button className="setgoalbtn" id="setToday" onClick={checkActive}>Today</button>
                     <button className="setgoalbtn" id="setWeekly" onClick={checkActive}>Weekly</button> */}
