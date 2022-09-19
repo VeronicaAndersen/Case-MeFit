@@ -110,6 +110,7 @@ button {
     border: none;
     border-radius: 10px;
     margin: 5px;
+    max-height: 30px;
 }
 
 .item button:hover,
@@ -128,6 +129,11 @@ button {
 
 .delete-btn:hover {
     background-color: #b45454 !important;
+}
+
+.add-btn {
+    color: #fff;
+    background-color: var(--primary) !important;
 }
 
 .none {
@@ -189,6 +195,8 @@ button {
 /*______________ Menu __________________*/
 
 nav {
+    position: sticky;
+    z-index: 1000;
     width: 100%;
     top: 0;
     background-color: var(--primary);
@@ -217,7 +225,8 @@ a {
     text-decoration: none;
     color: #fff;
 }
-a:hover{
+
+a:hover {
     color: #000;
 }
 
@@ -301,6 +310,7 @@ a:hover{
     top: 80px;
     left: 250px;
     text-align: center;
+    padding: 0 20px 10px 20px;
 }
 
 /*______________ Todays list __________________*/
@@ -338,6 +348,10 @@ a:hover{
     box-shadow: var(--shadow);
 }
 
+.archived-goal {
+    margin: auto auto;
+}
+
 .weekly-todo {
     margin: 10px;
 }
@@ -359,7 +373,7 @@ a:hover{
 }
 
 #item-complete {
-    border-color: var(--primary);
+    border-color: var(--secondary);
 }
 
 /*______________ Dropdown __________________*/
@@ -367,7 +381,7 @@ a:hover{
 .dropdown-bar {
     position: relative;
     background: var(--secondary);
-    width: 60vw;
+    width: 40vw;
     height: 50px;
     margin: 10px auto;
     line-height: 50px;
@@ -389,7 +403,7 @@ a:hover{
     display: none;
     position: absolute;
     background-color: var(--bg-content);
-    width: 60vw;
+    width: 40vw;
     box-shadow: var(--shadow);
     z-index: 1;
     right: 0;
@@ -495,7 +509,8 @@ a:hover{
 
 #createExercise,
 #createWorkout,
-#createProgram {
+#createProgram,
+#createSet {
     display: none;
     position: absolute;
     background-color: var(--bg-content);
@@ -509,7 +524,8 @@ a:hover{
 
 #createExercise .input-form,
 #createWorkout .input-form,
-#createProgram .input-form {
+#createProgram .input-form,    
+#createSet .input-form {
     width: 40vw;
     margin: 5px;
 }
@@ -544,6 +560,7 @@ select {
     cursor: inherit;
     line-height: inherit;
     outline: none;
+    max-height: 40px;
 }
 
 select::-ms-expand {
@@ -566,4 +583,86 @@ select::-ms-expand {
     height: 0.5em;
     background-color: var(--select-arrow);
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+/*__________________ Item container ________________________*/
+
+.container {
+    display: flex;
+    background-color: var(--bg-content);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: inherit;
+    min-height: 50px;
+    margin: 10px auto;
+    padding: 10px 10px;
+    line-height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/*__________________ Card details ________________________*/
+
+.card {
+    background-color: var(--bg-content);
+    width: 300px;
+    height: fit-content;
+    margin: 10px auto;
+    padding: 20px 0;
+    border-radius: 10px;
+    display: none;
+}
+
+.card img {
+    width: 200px;
+    margin: 10px;
+}
+
+figcaption {
+    padding-top: 10px;
+    border-top: solid var(--primary) 2px;
+}
+
+#update-exer,
+#update-work,
+#update-prog {
+    display: none;
+}
+
+/*__________________ Calendar ________________________*/
+
+.calendar {
+    max-width: 800px;
+}
+
+.e-schedule .e-month-view .e-current-date .e-date-header,
+.e-schedule .e-month-agenda-view .e-current-date .e-date-header {
+    background-color: var(--primary);
+}
+
+.e-schedule .e-vertical-view .e-header-cells.e-current-day,
+.e-schedule .e-month-view .e-date-header-wrap table td.e-current-day,
+.e-schedule .e-month-agenda-view .e-date-header-wrap table td.e-current-day,
+.e-schedule .e-schedule-toolbar .e-active-view .e-tbar-btn-text,
+.e-schedule .e-schedule-toolbar .e-active-view .e-icons {
+    color: var(--primary);
+    font-weight: 900;
+}
+
+/*__________________ Footer ________________________*/
+.footer {
+    background-color: var(--primary);
+    color: #fff;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }

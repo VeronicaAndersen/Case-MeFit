@@ -3,7 +3,7 @@ import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-//Create a new user (takes in array of program information)
+//Create a new program (takes in array of program information)
 export const createProgram = async (programInfo) => {
     try {
         const response = await fetch(`${apiUrl}/program`, {
@@ -59,7 +59,7 @@ export const deleteProgram = async (programId) => {
     }
 }
 //Update an existing program with workoutId
-export const uppdateProgram = async (programInfo, programId, workout) => {
+export const updateWorkoutInProgram = async (programInfo, programId, workout) => {
     try {
         if(programId === undefined){
             throw new Error("Program id is undefined");
@@ -69,7 +69,7 @@ export const uppdateProgram = async (programInfo, programId, workout) => {
         }
         let updatedProgram = null;
         for (let i = 0; i < programInfo.length; i++) {
-            if(programInfo[i].id == programId){
+            if(programInfo[i].id === programId){
                 updatedProgram = programInfo[i];
                 break;
             }

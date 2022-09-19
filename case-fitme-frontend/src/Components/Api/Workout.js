@@ -3,7 +3,7 @@ import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-//Create a new user (takes in array of workout information)
+//Create a new workout (takes in array of workout information)
 export const createWorkout = async (workoutInfo) => {
     try {
         const response = await fetch(`${apiUrl}/workout`, {
