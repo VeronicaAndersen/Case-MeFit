@@ -69,8 +69,8 @@ export default function ExerciseItem({ exercise }) {
     }
     const handleAddToWorkout = () => {
         handleAddToSet();
-        console.log(apiWorkoutData.id);
-        updateSetInWorkout(apiWorkoutData, apiWorkoutData.id, selectedSetId);
+        console.log("vad ", selectedSetId);
+        updateSetInWorkout(apiWorkoutData, selectedWorkoutId.id, selectedSetId);
     }
     /* Prints out Exercises with selections boxes for set & workout.*/
     if (exercise.id != null) {

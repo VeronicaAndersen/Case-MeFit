@@ -34,7 +34,8 @@ export default function WorkoutItem({ workout }) {
     }, []);
 
     const handleAddToProgram = () => {
-        updateWorkoutInProgram(apiData, selectedProgramId, workout.id);
+        console.log(selectedProgramId.id);
+        updateWorkoutInProgram(apiData, selectedProgramId.id, workout.id);
     }
     const handleProgramSelect = (event) => {
         setSelectedProgramId(event.target.value);

@@ -69,6 +69,7 @@ export const updateSetInWorkout = async (workoutInfo, workoutId, set) => {
             throw new Error("Set body is undefined");
         }
         let updatedWorkout = null;
+        console.log(updatedWorkout);
         for (let i = 0; i < workoutInfo.length; i++) {
             if(workoutInfo[i].id === workoutId){
                 updatedWorkout = workoutInfo[i];
