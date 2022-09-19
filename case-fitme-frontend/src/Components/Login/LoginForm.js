@@ -6,7 +6,7 @@ const LoginForm = () => {
         <>
             <div>
                 <section className="buttons">
-                {!keycloak.authenticated && (
+                    {!keycloak.authenticated && (
                         <button className="button" onClick={() => keycloak.login()}>Login</button>
                     )}
                     {!keycloak.authenticated && (

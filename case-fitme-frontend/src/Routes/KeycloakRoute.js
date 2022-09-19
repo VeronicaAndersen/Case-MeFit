@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Redirect } from "react-router-dom";
 import keycloak from "../Keycloak/keycloak";
 
 function KeycloakRoute({ children, role, redirectTo = "/" }) {

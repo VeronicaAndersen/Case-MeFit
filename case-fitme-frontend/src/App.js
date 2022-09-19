@@ -29,7 +29,7 @@ function App() {
           <Route path='/archivedgoals' element={<ArchivedGoal />} />
         </Routes>
         <Login/>
-        <Footer/>
+        {/* <Footer/> */}
     </div>
     </BrowserRouter>
     

@@ -12,13 +12,13 @@ const Navbar = () => {
                     to="/">
                     <strong>MeFit</strong>
                 </Link>
-                {keycloak.authenticated && (
+                {/* {keycloak.authenticated && (
                     <Link className="menu-item"
                         id="goals"
                         to="/goals">
                         Goals
                     </Link>
-                )}
+                )} */}
                 {keycloak.authenticated && (
                     <div className="dropdown">
                         <div className="menu-item"
@@ -41,7 +41,7 @@ const Navbar = () => {
 
             </nav>
             <Sidebar />
-                <div className="token">{keycloak.token}</div>
+                {/* <div className="token">{keycloak.token}</div> */}
 
         </>
     )

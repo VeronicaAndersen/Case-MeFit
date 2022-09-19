@@ -29,10 +29,9 @@ const ArchivedGoals = () => {
     return (
         <>
             {apiData.map(data => {
-                if (data.complete === true) {
+                if (data.achieved === true) {
                     return (
                         <div key={data.id} className="weekly-schedule">
-                            <h1>Archived goals</h1>
                             <div className="weekly-todo">
                                 <p className="workout">{data.goalName}</p>
                                 {<div>
@@ -42,19 +41,7 @@ const ArchivedGoals = () => {
                                 <div className="circle" id='item-complete'></div>
                             </div>
                         </div>)
-                } else {
-                    return (
-                        <div key={data.id} className="weekly-schedule">
-                            <div className="weekly-todo">
-                                <p className="workout">{data.goalName}</p>
-                                {<div>
-                                    <p className="type">{data.date}</p>
-
-                                </div>}
-                                <div className="circle"></div>
-                            </div>
-                        </div>)
-                }
+                } 
             })}
         </>
     )
