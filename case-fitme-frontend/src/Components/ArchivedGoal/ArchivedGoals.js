@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import keycloak from '../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
-var counter = 0;
+
 const ArchivedGoals = () => {
 
     const [apiData, setApiData] = useState([]);
