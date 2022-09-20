@@ -8,7 +8,6 @@ import SetGoalsItem from "./SetGoalsItem";
 const SetGoal = () => {
 
     const [apiData, setApiData] = useState([]);
-    const [loading, setLoading] = useState(true);
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
     const [date, setDate] = useState(null);
@@ -39,9 +38,9 @@ const SetGoal = () => {
                 <DatePick {...register("date")} updateDate={setDate} />
                 <br />
                 <br />
-                {<button type="submit" value="Submit">Submit</button>}
+                {<button className='save-btn' type="submit" value="Submit">Submit</button>}
             </form>
-            {loading === false && apiData.map((data) => {
+            {apiData.map((data) => {
                 return (
                     <div key={data.id} >
                         <SetGoalsItem goal={data} />

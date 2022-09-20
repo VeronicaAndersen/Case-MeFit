@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
+
+    const onLogout = () =>{
+        navigate('/')
+        keycloak.logout()
+    }
     return (
         <>
         {/* Menu component using keycloak to check if user is authenticated.*/}
@@ -35,7 +40,7 @@ const Navbar = () => {
                                     Settings
                                 </Link>
                                 </div>
-                                <div onClick={() => navigate('/products')}  id="logout">Logout</div>
+                                <div onClick={onLogout}  id="logout">Logout</div>
                             </div>
                         </div>
                     </div>

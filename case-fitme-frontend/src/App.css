@@ -105,7 +105,8 @@ button {
 #contri-btn,
 #fa-btn,
 #save-btn,
-.save-btn {
+.save-btn
+ {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);

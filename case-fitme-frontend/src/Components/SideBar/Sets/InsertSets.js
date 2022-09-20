@@ -25,6 +25,7 @@ export default function InsertSets() {
             })
             .then((data) => {
                 setApiData(data);
+               
             })
             .catch((err) => {
                 console.log(err.message);
@@ -45,6 +46,9 @@ export default function InsertSets() {
         if (userResponse !== null) {
             //console.log(set);
             //window.location.reload();
+            setTimeout(function () {
+                window.location.reload();
+            }, 1000);
         }
     }
 
