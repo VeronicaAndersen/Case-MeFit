@@ -68,6 +68,7 @@ export const updateWorkoutInProgram = async (programInfo, programId, workout) =>
             throw new Error("Workout body is undefined");
         }
         let updatedProgram = null;
+        console.log(updatedProgram);
         for (let i = 0; i < programInfo.length; i++) {
             if(programInfo[i].id === programId){
                 updatedProgram = programInfo[i];

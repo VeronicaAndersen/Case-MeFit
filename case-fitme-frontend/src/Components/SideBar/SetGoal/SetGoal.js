@@ -8,17 +8,18 @@ import SetGoalsItem from "./SetGoalsItem";
 const SetGoal = () => {
 
     const [apiData, setApiData] = useState([]);
-    const [loading, setLoading] = useState(true);
     const { register, handleSubmit } = useForm();
     const [apiError, setApiError] = useState(null);
     const [date, setDate] = useState(null);
 
-    const onSubmit = async ({goalName}) => {
+    const onSubmit = async ({goalName, achieved}) => {
         console.log("I am inside onsubmit")
         console.log(goalName);
+        console.log(achieved);
         const goal = {
             goalName: goalName,
-            date: date
+            date: date,
+            achieved: achieved
         }
         console.log(goal);
         const [error, userResponse] = await createGoal(goal)
@@ -26,9 +27,9 @@ const SetGoal = () => {
         if (error !== null) {
             setApiError(error)
         }
-        /*if (userResponse !== null) {
-            window.location.reload();
-        }*/
+        if (userResponse !== null) {
+            alert("Goal added.")
+        }
     }
 
     return (
@@ -37,12 +38,12 @@ const SetGoal = () => {
                 <h1>Set new Goal</h1>
                 <input className='input-form' type="text" placeholder='Name' {...register("goalName")} />
                 <DatePick {...register("date")} updateDate={setDate} />
+                <input className='input-form' type="text" placeholder='Achieved: ex. false/true' {...register("achieved")} />
                 <br />
-                <GoalBox />
                 <br />
-                {<button type="submit" value="Submit">Submit</button>}
+                {<button className='save-btn' type="submit" value="Submit">Submit</button>}
             </form>
-            {loading === false && apiData.map((data) => {
+            {apiData.map((data) => {
                 return (
                     <div key={data.id} >
                         <SetGoalsItem goal={data} />
@@ -64,52 +65,4 @@ function DatePick({updateDate}) {
         </>
     )
 }
-
-const GoalBox = () => {
-
-    return (
-        <>
-            <button className='setgoalbtn' id='setProgram' onClick={checkActive}>Programs</button>
-            <button className='setgoalbtn' id='setWorkout' onClick={checkActive}>Workouts</button>
-
-            <div className="setgoalbox" id='programGoal'>
-                <p>There is no program for this goal.</p>
-            </div>
-
-            <div className="setgoalbox" id='workoutGoal'>
-                <p>There is no workout for this goal.</p>
-            </div>
-
-        </>
-    )
-}
-
 export default SetGoal;
-
-var checkProg = true;
-var checkWork = false;
-
-const checkActive = () => {
-    if (checkWork === false && checkProg === true) {
-        checkProg = false;
-        document.getElementById("setProgram").style.background = "var(--primary)";
-        document.getElementById("setProgram").style.border = "var(--primary) solid 2px";
-        document.getElementById("programGoal").style.display = "flex";
-
-        checkWork = true;
-        document.getElementById("setWorkout").style.border = "none"
-        document.getElementById("setWorkout").style.background = "#f1f1f1";
-        document.getElementById("workoutGoal").style.display = "none";
-
-    } else if (checkWork === true && checkProg === false) {
-        checkProg = true;
-        document.getElementById("setProgram").style.border = "none"
-        document.getElementById("setProgram").style.background = "#f1f1f1";
-        document.getElementById("programGoal").style.display = "none";
-
-        checkWork = false;
-        document.getElementById("setWorkout").style.background = "var(--primary)";
-        document.getElementById("setWorkout").style.border = "var(--primary) solid 2px";
-        document.getElementById("workoutGoal").style.display = "flex";
-    }
-}

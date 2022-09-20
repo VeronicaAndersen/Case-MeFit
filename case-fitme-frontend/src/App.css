@@ -12,10 +12,12 @@
 }
 
 body {
-    background-image: url("/public/training.jpg");
+    background-image: url("/public/bg (1).jpg");
     background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
+    background-color: #492c24;
+    position: relative;
 }
 
 h1,
@@ -103,7 +105,8 @@ button {
 #contri-btn,
 #fa-btn,
 #save-btn,
-.save-btn {
+.save-btn
+ {
     margin-right: 20px;
     cursor: pointer;
     background-color: var(--secondary);
@@ -157,7 +160,7 @@ button {
     height: 40px;
     line-height: 40px;
     margin: auto auto;
-    margin-top: 40%;
+    margin-top: 30%;
     text-align: center;
 }
 
@@ -167,10 +170,11 @@ button {
     left: 50%;
     width: 90px;
     height: 90px;
-    margin: -60px 0 0 -60px;
+    margin: -200px 0 0 -60px;
     -webkit-animation: spin 4s linear infinite;
     -moz-animation: spin 4s linear infinite;
     animation: spin 4s linear infinite;
+    color: #fff;
 }
 
 @-moz-keyframes spin {
@@ -357,7 +361,7 @@ a:hover {
 }
 
 .weekly-todo p {
-    margin: 0;
+    margin: 5px 0 0 0;
     text-align: start;
 }
 
@@ -370,6 +374,7 @@ a:hover {
     float: right;
     top: -30px;
     right: 10px;
+    cursor: pointer;
 }
 
 #item-complete {
@@ -660,9 +665,14 @@ figcaption {
     background-color: var(--primary);
     color: #fff;
     width: 100%;
-    position: sticky;
     bottom: 0;
+    margin-top: -200px;
+    position: relative;
     height: 40px;
     line-height: 40px;
     text-align: center;
+}
+
+.video-link{
+    color: var(--primary);
 }

@@ -59,3 +59,34 @@ export const deleteWorkout = async (workoutId) => {
     }
 }
 
+//Update an existing workout with setId
+export const updateSetInWorkout = async (workoutInfo, workoutId, set) => {
+    try {
+        if(workoutId === undefined){
+            throw new Error("Workout id is undefined");
+        }
+        if(set === undefined){
+            throw new Error("Set body is undefined");
+        }
+        let updatedWorkout = null;
+        console.log(updatedWorkout);
+        for (let i = 0; i < workoutInfo.length; i++) {
+            if(workoutInfo[i].id === workoutId){
+                updatedWorkout = workoutInfo[i];
+                break;
+            }
+        }
+        updatedWorkout.sets = [set]
+        console.log(updatedWorkout);
+        const response = await fetch(`${apiUrl}/workout/${workoutId}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${keycloak.token}`},
+            body: JSON.stringify(updatedWorkout)
+        })
+        return [null, response.data]
+    }
+    catch(error){
+        return [error.message, []]
+    }
+
+}

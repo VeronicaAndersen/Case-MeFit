@@ -15,7 +15,6 @@ export default function ProgramItem ({ program }) {
                 <span className='container-items'>
                     <DeleteProgram program={program}/>
                     <button onClick={showEdit}>Edit</button>
-                    <button>Add</button>
                 </span>
             </div>
             <ProgramDetails program={program}/>

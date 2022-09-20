@@ -1,7 +1,7 @@
 import { Inject, ScheduleComponent, Day, Week, Month, ViewsDirective, ViewDirective } from "@syncfusion/ej2-react-schedule";
 
 export default function Calendar() {
-
+/* Calendar built with syncfusion */
     return (
         <>
             <ScheduleComponent currentView="Month" className="calendar">

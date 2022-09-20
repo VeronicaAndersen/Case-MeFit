@@ -34,7 +34,7 @@ export default function WorkoutDetails({workout}) {
         {/* Prints out details about wprokuts.*/}
         <div className='card' id='work-detail'>
                     <h3>Details</h3>
-                        <p>{workout.name}</p>
+                        <h4>{workout.name}</h4>
                         <p>{workout.type}</p>
                 </div>
         </>

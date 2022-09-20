@@ -46,11 +46,11 @@ export default function UpdateExercises({ exercise }) {
             {/* Form that updates exercise. */}
             <form className='updateForm' id="update-exer" onSubmit={handleSubmit(onUpdate)}>
                 <h3>Edit</h3>
-                <div>
-                    <input className='input-form' type="text" name="name" key={exercise.name} value={name} onChange={event => handleName(event)} />
-                    <input className='input-form' type="text" name="description" key={exercise.description} value={description} onChange={event => handleDescription(event)} />
-                    <input className='input-form' type="text" name="targetMuscleGroup" key={exercise.targetMuscleGroup} value={targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} /> {/* Contains null value. */}
-                    <input className='input-form' type="text" name="name" key={exercise.image} value={image} onChange={event => handleImage(event)} />
+                <div key={exercise.id}>
+                    <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
+                    <input className='input-form' type="text" name="description" value={description} onChange={event => handleDescription(event)} />
+                    <input className='input-form' type="text" name="targetMuscleGroup" value={targetMuscleGroup} onChange={event => handleTargetMuscleGroup(event)} /> {/* Contains null value. */}
+                    <input className='input-form' type="text" name="name" value={image} onChange={event => handleImage(event)} />
                 </div>
                 <button className='save-btn' type="submit" onClick={onUpdate} value={exercise.id}>Save</button>
             </form>

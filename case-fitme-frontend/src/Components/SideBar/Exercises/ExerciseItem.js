@@ -4,6 +4,7 @@ import DeleteExercise from './DeleteExercise';
 import UpdateExercises from './UpdateExercise';
 import ExerciseDetails from './ExerciseDetails';
 import { updateExerciseSet } from '../../Api/Exercise';
+import { updateSetInWorkout } from '../../Api/Workout';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -28,7 +29,7 @@ export default function ExerciseItem({ exercise }) {
             })
             .then((set) => {
                 setApiSetData(set);
-                setSelectedSetId(set[0])
+                setSelectedSetId(set[0].id)
             })
             .catch((err) => {
                 console.log(err.message);
@@ -67,7 +68,9 @@ export default function ExerciseItem({ exercise }) {
         setSelectedWorkoutId(event.target.value);
     }
     const handleAddToWorkout = () => {
-
+        handleAddToSet();
+        console.log("vad ", selectedSetId);
+        updateSetInWorkout(apiWorkoutData, selectedWorkoutId.id, selectedSetId);
     }
     /* Prints out Exercises with selections boxes for set & workout.*/
     if (exercise.id != null) {
@@ -90,7 +93,6 @@ export default function ExerciseItem({ exercise }) {
                             })}
                         </select>
 
-                        <button onClick={handleAddToSet}>Add</button>
                         <label>Workout: </label>
                         <select name="workouts" className='select' id="workouts" onChange={event => handleWorkoutSelect(event)}>
                             {apiWorkoutData.map((workout) => {

@@ -1,8 +1,15 @@
 import keycloak from "../../Keycloak/keycloak";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Sidebar from "../SideBar/Sidebar";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
+    const onLogout = () =>{
+        navigate('/')
+        keycloak.logout()
+    }
     return (
         <>
         {/* Menu component using keycloak to check if user is authenticated.*/}
@@ -12,19 +19,19 @@ const Navbar = () => {
                     to="/">
                     <strong>MeFit</strong>
                 </Link>
-                {keycloak.authenticated && (
+                {/* {keycloak.authenticated && (
                     <Link className="menu-item"
                         id="goals"
                         to="/goals">
                         Goals
                     </Link>
-                )}
+                )} */}
                 {keycloak.authenticated && (
                     <div className="dropdown">
                         <div className="menu-item"
                             id="profile"
                             to="/profile">
-                            {keycloak.tokenParsed.name} 
+                            {keycloak.tokenParsed.given_name} 
                             <span className="dropdown-arrow"></span>
                             <div className="dropdown-profile">
                                 <div><Link 
@@ -33,7 +40,7 @@ const Navbar = () => {
                                     Settings
                                 </Link>
                                 </div>
-                                <div onClick={() => keycloak.logout()} id="logout">Logout</div>
+                                <div onClick={onLogout}  id="logout">Logout</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +48,7 @@ const Navbar = () => {
 
             </nav>
             <Sidebar />
-                <div className="token">{keycloak.token}</div>
+                {/* <div className="token">{keycloak.token}</div> */}
 
         </>
     )
