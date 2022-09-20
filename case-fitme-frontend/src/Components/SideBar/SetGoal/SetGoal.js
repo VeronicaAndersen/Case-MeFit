@@ -12,12 +12,14 @@ const SetGoal = () => {
     const [apiError, setApiError] = useState(null);
     const [date, setDate] = useState(null);
 
-    const onSubmit = async ({goalName}) => {
+    const onSubmit = async ({goalName, achieved}) => {
         console.log("I am inside onsubmit")
         console.log(goalName);
+        console.log(achieved);
         const goal = {
             goalName: goalName,
-            date: date
+            date: date,
+            achieved: achieved
         }
         console.log(goal);
         const [error, userResponse] = await createGoal(goal)
@@ -36,6 +38,7 @@ const SetGoal = () => {
                 <h1>Set new Goal</h1>
                 <input className='input-form' type="text" placeholder='Name' {...register("goalName")} />
                 <DatePick {...register("date")} updateDate={setDate} />
+                <input className='input-form' type="text" placeholder='Achieved: ex. false/true' {...register("achieved")} />
                 <br />
                 <br />
                 {<button className='save-btn' type="submit" value="Submit">Submit</button>}

@@ -374,6 +374,7 @@ a:hover {
     float: right;
     top: -30px;
     right: 10px;
+    cursor: pointer;
 }
 
 #item-complete {

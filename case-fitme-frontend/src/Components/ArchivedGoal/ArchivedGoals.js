@@ -4,7 +4,7 @@ import keycloak from '../../Keycloak/keycloak';
 const apiUrl = process.env.REACT_APP_API_URL
 
 const ArchivedGoals = () => {
-
+/* Api fetch for goals. */
     const [apiData, setApiData] = useState([]);
     useEffect(() => {
         fetch(`${apiUrl}/goal`, {
@@ -28,6 +28,7 @@ const ArchivedGoals = () => {
 
     return (
         <>
+        {/* Prints out a list of achieved goals. */}
             {apiData.map(data => {
                 if (data.achieved === true) {
                     return (
