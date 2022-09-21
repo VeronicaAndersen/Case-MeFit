@@ -10,12 +10,16 @@ export default function InsertExercises() {
     /* Method for creating new exercise. */
     const onSubmit = async (exercise) => {
         const [error, userResponse] = await createExercise(exercise)
+        const newExercise = {
+            name: exercise
+        }
 
         if (error !== null) {
             setApiError(error)
         }
         if (userResponse !== null) {
-            window.location.reload();
+            console.log(exercise);
+            //window.location.reload();
         }
     }
     /* Prints out a form with input fields for exercises. */

@@ -6,12 +6,9 @@ const apiUrl = process.env.REACT_APP_API_URL
 //Create a new exercise (takes in array of exercise information)
 export const createExercise = async (exerciseInfo) => {
     try {
-        const response = await axios.post(`${apiUrl}/exercise`, {
+        const response = await fetch(`${apiUrl}/exercise`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${keycloak.token}`
-            },
+            headers: {'Content-Type': 'application/json','Authorization': `Bearer ${keycloak.token}`},
             body: JSON.stringify(exerciseInfo)
         })
         if (!response.ok) {
@@ -19,10 +16,6 @@ export const createExercise = async (exerciseInfo) => {
         }
         console.log(exerciseInfo);
         const data = await response.json();
-        setTimeout(() => {
-            const statusMessage = document.getElementById('box');
-            statusMessage.style.display = 'none';
-        }, 1000);
         return [null, data]
     }
     catch (error) {
