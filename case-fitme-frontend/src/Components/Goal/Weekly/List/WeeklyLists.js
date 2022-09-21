@@ -9,8 +9,6 @@ const WeeklyLists = ({ goal }) => {
 
     const [apiData, setApiData] = useState([]);
     const { handleSubmit } = useForm();
-    const [name, setName] = useState(goal.name);
-    const [achieved, setComplete] = useState(goal.achieved);
 
     useEffect(() => {
         fetch(`${apiUrl}/goal`, {
@@ -42,9 +40,7 @@ const WeeklyLists = ({ goal }) => {
             window.location.reload();
         }, 1000);
     }
-    const handleComplete = (event) => {
-        setComplete(event.target.value);
-    }
+
     return (
         <>
         {/* Prints out a list of all goals thats not have been acchieved. */}
@@ -59,10 +55,6 @@ const WeeklyLists = ({ goal }) => {
 
                                 </div>}
                                 <div className="circle" key={data.id}></div>
-                                <form onSubmit={handleSubmit(onUpdate)}>
-                                    <input className='input-form' type="text" name="achieved" value={achieved} onChange={event => handleComplete(event)} />
-                                    <button type="submit">achieved</button>
-                                </form>
                             </div>
                         </div>)
                 }
