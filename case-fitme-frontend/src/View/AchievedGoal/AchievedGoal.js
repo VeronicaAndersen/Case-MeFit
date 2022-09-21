@@ -1,4 +1,4 @@
-import ArchivedGoals from "../../Components/ArchivedGoal/ArchivedGoals";
+import ArchivedGoals from "../../Components/SideBar/AchievedGoal/AchievedGoals";
 import keycloak from "../../Keycloak/keycloak";
 
 const WeeklyLists = () => {

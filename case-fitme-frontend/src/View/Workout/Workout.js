@@ -8,7 +8,6 @@ const Workout = () => {
             {keycloak.authenticated && (
                 <div className="content">
                     <Workouts />
-                    {keycloak.token}
                 </div>
             )}
         </>

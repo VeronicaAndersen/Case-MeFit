@@ -18,8 +18,7 @@ export default function InsertExercises() {
             setApiError(error)
         }
         if (userResponse !== null) {
-            console.log(exercise);
-            //window.location.reload();
+            window.location.reload();
         }
     }
     /* Prints out a form with input fields for exercises. */

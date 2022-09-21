@@ -9,7 +9,7 @@ import Workout from './View/Workout/Workout';
 import Program from './View/Program/Program';
 import SetGoal from './View/SetGoal/SetGoal';
 import Dashboard from './View/Dashboard/Dashboard';
-import ArchivedGoal from './View/ArchivedGoal/ArchivedGoal';
+import AchievedGoal from './View/AchievedGoal/AchievedGoal';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/workouts" element={<Workout/>}/>
           <Route path="/programs" element={<Program/>}/>
           <Route path='/setgoals' element={<SetGoal />} />
-          <Route path='/archivedgoals' element={<ArchivedGoal />} />
+          <Route path='/achievedgoals' element={<AchievedGoal />} />
         </Routes>
     </div>
     </BrowserRouter>

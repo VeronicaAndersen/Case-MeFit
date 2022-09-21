@@ -15,8 +15,8 @@ export const createSet = async (setInfo) => {
         if (!response.ok) {
             throw new Error('Could not create new set')
         }
-        console.log(setInfo);
         const data = await response.json()
+        console.log(setInfo);
         return [ null, data ]
     }
     catch (error) {

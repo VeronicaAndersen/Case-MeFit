@@ -18,8 +18,8 @@ const Sidebar = () => {
                     </Link>
                     <Link className="side-item"
                         id="archived"
-                        to="/archivedgoals">
-                        Archived Goal
+                        to="/achievedgoals">
+                        Achieved Goal
                     </Link>
                     <Link className="side-item"
                         id="exercise"
