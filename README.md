@@ -25,6 +25,15 @@ A local demo of the application will start at http://localhost:3000.
 
 Click login or register to get access to the application. 
 
+## Deployment
+The application is deployed trough heroku if you want to visit the page click the link below: 
+
+https://mefit-frontend-case.herokuapp.com/ 
+
+To get it working you will have to use our backend running in the background locally. Link to the projects backend is linked below:
+
+https://github.com/VeronicaAndersen/Case-FitMe-Backend 
+
 ## Contributors
 
 Sona Rahimova @suay-selay
