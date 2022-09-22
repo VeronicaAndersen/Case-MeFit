@@ -14,7 +14,7 @@ Create a file named '.env' in the project folder and enter the following:
 ```
 REACT_APP_API_URL=<api url placeholder>
 ```
-Replace placeholders with your api key and api url. 
+Replace placeholders with your api url. 
 
 ## Usage
 Enter the following in the terminal to start the application:
