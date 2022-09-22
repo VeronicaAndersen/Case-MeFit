@@ -10,6 +10,9 @@ export default function InsertExercises() {
     /* Method for creating new exercise. */
     const onSubmit = async (exercise) => {
         const [error, userResponse] = await createExercise(exercise)
+        const newExercise = {
+            name: exercise
+        }
 
         if (error !== null) {
             setApiError(error)

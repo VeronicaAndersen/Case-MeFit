@@ -660,19 +660,3 @@ figcaption {
     font-weight: 900;
 }
 
-/*__________________ Footer ________________________*/
-.footer {
-    background-color: var(--primary);
-    color: #fff;
-    width: 100%;
-    bottom: 0;
-    margin-top: -200px;
-    position: relative;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-}
-
-.video-link{
-    color: var(--primary);
-}

@@ -44,7 +44,7 @@ export default function UpdateWorkouts({ workout }) {
                 <input className='input-form' type="text" name="name" value={name} onChange={event => handleName(event)} />
                 <div id={workout.id}>
                     <input className='input-form' type="text" name="type" value={type} onChange={event => handleType(event)} />
-                    <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} />{/* Contains null value. */}
+                    <input className='input-form' type="text" name="complete" value={complete} onChange={event => handleComplete(event)} />
                 </div>
                 <button className='save-btn' type="submit" onClick={onUpdate} value={workout.id}>Save</button>
             </form>

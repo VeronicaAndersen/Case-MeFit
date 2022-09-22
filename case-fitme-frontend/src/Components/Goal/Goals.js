@@ -1,4 +1,5 @@
 import keycloak from "../../Keycloak/keycloak";
+import UpdateGoal from "./Weekly/List/UpdateGoal";
 import WeeklyLists from "./Weekly/List/WeeklyLists";
 /* Dashboard that contains calendar and goals. */
 const Goal = () => {
@@ -10,6 +11,7 @@ const Goal = () => {
 
                     <div className="weekly-schedule" id='week-list'>
                         <WeeklyLists />
+                        
                     </div>
                 </div>
             )}
