@@ -43,10 +43,10 @@ const WeeklyLists = ({ goal }) => {
                                     {<div>
                                         <p className="type">{goal.date}</p>
                                     </div>}
-                                    <div className="circle" key={goal.id} value={goal.id}></div>
+                                    <UpdateGoal goal={goal} />
+                                    {/* <div className="circle"></div> */}
                                 </div>
                             </div>
-                            <UpdateGoal goal={goal} />
                         </div>
                     )
                 }
