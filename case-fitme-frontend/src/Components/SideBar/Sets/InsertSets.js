@@ -7,9 +7,9 @@ const apiUrl = process.env.REACT_APP_API_URL
 
 export default function InsertSets() {
 
-    const [setApiData] = useState([]);
+    const [setApiData, setSetApiData] = useState([]);
     const { register, handleSubmit } = useForm();
-    const [setApiError] = useState(null);
+    const [setApiError, setSetApiError] = useState(null);
 
     /* Api fetch request with error handling. */
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function InsertSets() {
                 return response.json();
             })
             .then((data) => {
-                setApiData(data);
+                setSetApiData(data);
                
             })
             .catch((err) => {
@@ -34,21 +34,16 @@ export default function InsertSets() {
 
     /* Method for creating. */
     const onSubmit = async ({ setExerciseRepetition }) => {
-        console.log(setExerciseRepetition);
         const set = {
             exerciseRepetition: setExerciseRepetition
         }
         const [error, userResponse] = await createSet(set)
 
         if (error !== null) {
-            setApiError(error)
+            setSetApiError(error)
         }
         if (userResponse !== null) {
-            //console.log(set);
-            //window.location.reload();
-            setTimeout(function () {
-                window.location.reload();
-            }, 1000);
+            window.location.reload();
         }
     }
 

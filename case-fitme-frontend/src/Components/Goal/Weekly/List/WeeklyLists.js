@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import keycloak from '../../../../Keycloak/keycloak';
 import { useForm } from 'react-hook-form';
 import { updateGoal } from '../../../Api/Goal';
+import UpdateGoal from './UpdateGoal';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 const WeeklyLists = ({ goal }) => {
 
     const [apiData, setApiData] = useState([]);
-    const { handleSubmit } = useForm();
 
     useEffect(() => {
         fetch(`${apiUrl}/goal`, {
@@ -22,41 +22,33 @@ const WeeklyLists = ({ goal }) => {
                 }
                 return response.json();
             })
-            .then((data) => {
-                setApiData(data);
+            .then((goal) => {
+                setApiData(goal);
             })
             .catch((err) => {
                 console.log(err.message);
             });
     }, []);
 
-    /* Method that updates workouts. */
-    const onUpdate = () => {
-        const newWorkout = {
-            achieved: goal.achieved
-        }
-        updateGoal(goal, goal.id)
-        setTimeout(function () {
-            window.location.reload();
-        }, 1000);
-    }
-
     return (
         <>
-        {/* Prints out a list of all goals thats not have been acchieved. */}
-            {apiData.map(data => {
-                if (data.achieved === false) {
+            {/* Prints out a list of all goals thats not have been acchieved. */}
+            {apiData.map(goal => {
+                if (goal.achieved === false) {
                     return (
-                        <div key={data.id} className="weekly-schedule">
-                            <div className="weekly-todo">
-                                <p className="workout">{data.goalName}</p>
-                                {<div>
-                                    <p className="type">{data.date}</p>
-
-                                </div>}
-                                <div className="circle" key={data.id}></div>
+                        <div>
+                            <div key={goal.id} className="weekly-schedule">
+                                <div className="weekly-todo">
+                                    <p className="workout">{goal.goalName}</p>
+                                    {<div>
+                                        <p className="type">{goal.date}</p>
+                                    </div>}
+                                    <div className="circle" key={goal.id} value={goal.id}></div>
+                                </div>
                             </div>
-                        </div>)
+                            <UpdateGoal goal={goal} />
+                        </div>
+                    )
                 }
             })}
         </>

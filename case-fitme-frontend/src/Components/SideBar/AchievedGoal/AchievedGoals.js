@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import keycloak from '../../Keycloak/keycloak';
+import keycloak from '../../../Keycloak/keycloak';
 
 const apiUrl = process.env.REACT_APP_API_URL
 
